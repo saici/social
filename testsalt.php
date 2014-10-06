@@ -3,6 +3,6 @@
 	$username = 'test';
 	$password = 'test';
 	$email = 'test';
-	$date = date("YMD HiS");
+	$date = date("YMD His");
 	salt($username, $password, $email, $date);
 ?>
