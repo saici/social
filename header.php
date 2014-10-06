@@ -1,8 +1,7 @@
 <?php 
-
 SESSION_START();
 include 'functions.php';
-
+include 'includes/connect.php';
 
 ?>
 <html>
