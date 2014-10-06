@@ -1,0 +1,8 @@
+<?php 
+	include 'includes/salt.php';
+	$username = 'test';
+	$password = 'test';
+	$email = 'test';
+	$date = date("YMD Hi");
+	salt($username, $password, $email, $date);
+?>
