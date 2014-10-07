@@ -1,3 +1,3 @@
 <?php
-	include include($_SERVER['DOCUMENT_ROOT'] . '/connect.php');
+	include ($_SERVER['DOCUMENT_ROOT'] . '/connect.php');
 ?>	
