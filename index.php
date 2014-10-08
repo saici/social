@@ -4,10 +4,11 @@
 
 
 	if(isset($_SESSION['user'])){
+		
 		include 'timeline.php';
 	}
 	else{
-		echo 'hoi';
+		
 		include 'login.php';
 	}
 	

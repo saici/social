@@ -6,7 +6,7 @@ $friends = array();
 
 $checkpage = 'true';
 
-//include 'functions.php';
+
 ?>
 <html>
 <head>

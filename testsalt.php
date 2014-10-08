@@ -1,8 +1,8 @@
 <?php 
 	include 'includes/salt.php';
-	$username = 'test';
-	$password = 'test';
-	$email = 'test';
-	$date = date("YMD His");
+	$username = 'jeroen';
+	$password = 'hoi';
+	$email = 'test@test.nl';
+	$date = date("YMDHis", strtotime("2014-10-08 00:00:00"));
 	salt($username, $password, $email, $date);
 ?>
