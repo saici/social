@@ -1,8 +1,12 @@
 <?php 
-SESSION_START();
-include 'functions.php';
 include 'includes/connect.php';
 
+
+$friends = array();
+
+$checkpage = 'true';
+
+//include 'functions.php';
 ?>
 <html>
 <head>

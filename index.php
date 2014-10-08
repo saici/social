@@ -1,11 +1,16 @@
 <?php 
 	include 'header.php';
 	$query = mysqli_query($con, "SELECT * FROM test");
-	while($row = mysqli_fetch_array($query)){
-		echo $row['test'];
+
+
+	if(isset($_SESSION['user'])){
+		include 'timeline.php';
 	}
-?>
-	index.php
-<?php
+	else{
+		echo 'hoi';
+		include 'login.php';
+	}
+	
+
 	include 'footer.php';
 ?>
