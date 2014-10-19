@@ -4,7 +4,9 @@
 
 
 	if(isset($_SESSION['user'])){
-		
+		?>
+		<a href="login.php?logout">Log uit</a><br />
+		<?php
 		include 'timeline.php';
 	}
 	else{
