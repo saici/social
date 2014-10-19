@@ -3,6 +3,7 @@ include 'includes/connect.php';
 
 
 $friends = array();
+$friendlist = "";
 
 $checkpage = 'true';
 
