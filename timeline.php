@@ -1,3 +1,12 @@
+<div class="well">
+                    <h4>Status bijwerken</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"><?php if(isset($_GET['re'])){echo mysqli_real_escape_string($con,$_GET['re']);}?></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Verzenden</button>
+                    </form>
+                </div>
 <?php
 
 
@@ -41,7 +50,7 @@
                         <h4 class="media-heading">' . ucfirst($userpost) . '
                             <small>' . $row['messagedate'] . '</small>
                         </h4>
-                       ' . $row['message'] .'
+                       ' . $row['message'] .'<br /><a href="index.php?re=' . $row['message'] .'">Repost</a>
                     </div>
                 </div>
                ';

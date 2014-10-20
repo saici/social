@@ -4,9 +4,7 @@
 
 
 	if(isset($_SESSION['user'])){
-		?>
-		
-		<?php
+
 		include 'timeline.php';
 		
 	}
