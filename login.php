@@ -95,15 +95,61 @@ $checkpage = 'true';
 		<input type="text"class="form-control" placeholder="Gebruikersnaam" name="username"><br>
 		<input type="password" class="form-control" style="input-placeholder{color: red;}"placeholder="Wachtwoord" name="password"><br>
 		
-		<input type="submit" class="form-control" style="width: 150px;" value="Login">
+		<input type="submit" class="btn btn-primary" style="width: 150px;" value="Login"> <a href="#about" style="width: 150px;"class="btn btn-primary page-scroll ">Registreer</a>
+                         
+                        
 	</form>
                     </div>
+                   
                 </div>
             </div>
+            
         </div>
     </header>
-
-
+    
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+               <h1 class="brand-heading">Registreer</h1>
+               <form action="includes/login.php" method="post">
+								<?php if(isset($_GET['failed'])){ echo'
+									<div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten.
+</div>
+									';
+								}0
+									?>
+		<input type="text"class="form-control" placeholder="Gebruikersnaam" name="username"><br>
+		<input type="password" class="form-control" style="input-placeholder{color: red;}"placeholder="Wachtwoord" name="password"><br>
+		
+		<a href="#about" style="width: 150px;"class="btn btn-primary page-scroll ">Registreer</a>
+                         
+                        
+	</form>
+            </div>
+        </div>
+    </section>
+<footer>
+        <div class="container text-center">
+           
+        </div>
+    </footer>
+<footer>
+        <div class="container text-center">
+           
+        </div>
+    </footer>
+<footer>
+        <div class="container text-center">
+           
+        </div>
+    </footer>
+    <footer>
+        <div class="container text-center">
+           
+        </div>
+    </footer>
  <!-- jQuery Version 1.11.0 -->
     <script src="js/jquery-1.11.0.js"></script>
 
@@ -119,6 +165,7 @@ $checkpage = 'true';
 
 
 </body>
+    <script src="js/grayscale.js"></script>
 
 </html>
 

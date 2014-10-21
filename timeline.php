@@ -25,6 +25,20 @@
 		
 			
 			$timeline = mysqli_query($con, "SELECT * FROM messages WHERE user = '$user' $friendlist ORDER BY messagedate DESC") or die(mysqli_error($con));
+			$timelineexist = mysqli_num_rows($timeline);
+			
+				if($timelineexist== 0){
+														echo '
+					<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Geen berichten</strong> Er zijn geen berichten beschikbaar.
+</div>
+					';
+
+
+				}
+			
+			
 			while($row = mysqli_fetch_array($timeline)){
 				
 				$getuser = $row['user'];
@@ -43,19 +57,9 @@
 				
 				$message = $row['message'];
 				$message = str_replace('"', '*', $message);
-				$timelineexist = mysqli_num_rows($con, $timeline);
 				
-				echo $timelineexist;
-				if(!$timelineexist == 0){
-					echo '
-					<div class="alert alert-danger">
-    <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten.
-</div>
-					';
-				}
-				else{
-				echo ' 
+			
+		echo ' 
 				<div class="media">
 				<div class="well">
                     <a class="pull-left" href="#">
@@ -64,13 +68,17 @@
                     <div class="media-body">
                         <h4 class="media-heading">' . ucfirst($userpost) . '
                             <small>' . $row['messagedate'] . '</small>
-                        </h4>
-                       ' . $row['message'] .'<br /><a href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a>
+                        </h4><br />
+                       
                     </div>
+                    ' . $row['message'] .'<br /><a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> <a style="margin-top: 20px;" class="btn btn-success btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '"><span class="glyphicon glyphicon-thumbs-up"></span></a>
                 </div>
                 </div>
-               ';
-				}
+               ';		
+							
+				
+				
+				
                unset($getuser);
 			}
 	}
