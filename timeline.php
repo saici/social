@@ -3,6 +3,7 @@
                     <form ACTION="includes/post.php" METHOD="POST">
                         <div class="form-group">
                             <textarea class="form-control" name="post" id="post" rows="3"><?php if(isset($_GET['re'])){echo mysqli_real_escape_string($con,$_GET['re']);}?></textarea>
+                            <input type="hidden" name="user" value="<?php if(isset($_GET['user'])){echo $_GET['user'];}else{echo 'NONE';}?>">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Verzenden">
                     </form>
@@ -40,9 +41,23 @@
 					$avatar = $info['avatar'];
 				}
 				
-				unset($getuser);
-				echo '
+				$message = $row['message'];
+				$message = str_replace('"', '*', $message);
+				$timelineexist = mysqli_num_rows($con, $timeline);
+				
+				echo $timelineexist;
+				if(!$timelineexist == 0){
+					echo '
+					<div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten.
+</div>
+					';
+				}
+				else{
+				echo ' 
 				<div class="media">
+				<div class="well">
                     <a class="pull-left" href="#">
                         <img class="media-object" height="64" width="64" src="' . $avatar . '" alt="">
                     </a>
@@ -50,10 +65,13 @@
                         <h4 class="media-heading">' . ucfirst($userpost) . '
                             <small>' . $row['messagedate'] . '</small>
                         </h4>
-                       ' . $row['message'] .'<br /><a href="index.php?re=' . $row['message'] .'">Repost</a>
+                       ' . $row['message'] .'<br /><a href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a>
                     </div>
                 </div>
+                </div>
                ';
+				}
+               unset($getuser);
 			}
 	}
 	

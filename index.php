@@ -1,18 +1,18 @@
-<?php 
-	include 'header.php';
-	$query = mysqli_query($con, "SELECT * FROM test");
+<?php
 
-
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 	if(isset($_SESSION['user'])){
-
-		include 'timeline.php';
+		include 'header.php';
 		
+		include 'timeline.php';
+		include 'footer.php';
 	}
 	else{
-		
 		include 'login.php';
 	}
 	
 
-	include 'footer.php';
+
 ?>
