@@ -1,10 +1,10 @@
 <div class="well">
                     <h4>Status bijwerken</h4>
-                    <form role="form">
+                    <form ACTION="includes/post.php" METHOD="POST">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"><?php if(isset($_GET['re'])){echo mysqli_real_escape_string($con,$_GET['re']);}?></textarea>
+                            <textarea class="form-control" name="post" id="post" rows="3"><?php if(isset($_GET['re'])){echo mysqli_real_escape_string($con,$_GET['re']);}?></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Verzenden</button>
+                        <input type="submit" class="btn btn-primary" value="Verzenden">
                     </form>
                 </div>
 <?php

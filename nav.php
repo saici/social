@@ -25,7 +25,7 @@
 <ul class="nav navbar-nav navbar-right">
           <form class="navbar-form navbar-left" role="search">
         <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input type="text" id="tags" class="form-control">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
