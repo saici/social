@@ -5,7 +5,7 @@
 	}
 	if(isset($_SESSION['user'])){
 		include 'header.php';
-		
+	
 		include 'timeline.php';
 		include 'footer.php';
 	}

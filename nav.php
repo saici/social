@@ -21,7 +21,7 @@
                         <a href="profile.php">Mijn Profiel</a>
                     </li>
                      <li>
-                        <a href="#">Instellingen</a>
+                        <a href="instellingen.php">Instellingen</a>
                     </li>
                     
                 </ul>

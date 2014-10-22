@@ -14,7 +14,9 @@ $checkpage = 'true';
 	if(isset($_GET['logout'])){
 		SESSION_DESTROY();
 		header("location: index.php");
+		
 	}
+
 ?>
 
 <!DOCTYPE html>
@@ -88,6 +90,14 @@ $checkpage = 'true';
 									<div class="alert alert-danger">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten.
+</div>
+									';
+								}0
+									?>
+																	<?php if(isset($_GET['removed'])){ echo'
+									<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Verwijderd</strong> Je account is succesvol verwijderd.
 </div>
 									';
 								}0
