@@ -1,3 +1,18 @@
+<?php
+	if(isset($_GET['like'])){
+		$likeid = mysqli_real_escape_string($con, $_GET['like']);
+		mysqli_query($con, "UPDATE messages SET likes = likes + 1 WHERE ID = '$likeid'") or die(mysqli_error($con));
+		
+		header("location: index.php");
+	}
+	if(isset($_GET['dislike'])){
+		$dislikeid = mysqli_real_escape_string($con, $_GET['dislike']);
+		mysqli_query($con, "UPDATE messages SET dislikes = dislikes + 1 WHERE ID = '$dislikeid'") or die(mysqli_error($con));
+		
+		header("location: index.php");
+	}
+?>
+
 <div class="well">
                     <h4>Status bijwerken</h4>
                     <form ACTION="includes/post.php" METHOD="POST">
@@ -57,7 +72,17 @@
 				
 				$message = $row['message'];
 				$message = str_replace('"', '*', $message);
+				$likes = $row['likes'];
+				$dislikes = $row['dislikes'];
 				
+				if($likes == 0){
+					$likes = "";
+				}
+				if($dislikes == 0){
+					$dislikes = "";
+				}
+				
+				$messageid = $row['ID'];
 			
 		echo ' 
 				<div class="media">
@@ -71,7 +96,7 @@
                         </h4><br />
                        
                     </div>
-                    ' . $row['message'] .'<br /><a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> <a style="margin-top: 20px;" class="btn btn-success btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+                    ' . $row['message'] .'<br /><a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> <a style="margin-top: 20px;" class="btn btn-success btn-sm" href="index.php?like=' . $messageid .'"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a> <a style="margin-top: 20px;" class="btn btn-danger btn-sm" href="index.php?dislike=' . $messageid .'"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $dislikes . ' </a>
                 </div>
                 </div>
                ';		
