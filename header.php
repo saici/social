@@ -64,13 +64,3 @@ $checkpage = 'true';
 	<?php include 'nav.php'; ?>
 
 <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-
-				<br />
-				<br />
-				<br />
