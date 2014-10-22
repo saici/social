@@ -6,8 +6,7 @@
 			
 			if($new==$new1){
 				$userid=$_SESSION['userid'];
-				mysqli_query($con,"UPDATE users SET password='$new'
-				WHERE id= '$userid'");
+				mysqli_query($con,"UPDATE users SET password='$new' WHERE ID= '$userid'");
 			}
 			if($new!==$new1){
 			echo "de wachtwoorden komen niet overeen";
