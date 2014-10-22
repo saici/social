@@ -1,3 +1,4 @@
+<!-- Page Content -->
     <div class="container">
 
         <div class="row">
@@ -31,9 +32,25 @@
                         </div>
                         <input type="submit" class="btn btn-primary" value="Verzenden">
                                             <!-- Button trigger modal -->
-<a class="btn btn-danger" data-toggle="modal" data-target="#myModal">
- <i class="fa fa-youtube"></i>
-</a>
+                                            
+
+<!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    + 
+  </button>
+  <ul class="dropdown-menu" role="menu">
+	<li>
+	<a  href="#" data-target="#myModal" data-toggle="modal">
+		<i class="fa fa-youtube"></i> YouTube
+	</a> 
+	</li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
                     </form>
 
 
