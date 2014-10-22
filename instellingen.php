@@ -2,8 +2,8 @@
 		include 'header.php';
 if(isset($_SESSION['user'])){
 
-		include 'delete1.php';
-		
+		include 'deleteform.php';
+		include 'wwform.php';
 	}
 	else{
 		header("location: index.php");
