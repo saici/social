@@ -4,6 +4,7 @@
 		
 				$userid = $_SESSION['userid'];
 			mysqli_query($con, "DELETE FROM users WHERE ID='$userid'") or die(mysql_error($con));
+            mysqli_query($con, "DELETE FROM messages WHERE ID='$userid'") or die(mysql_error($con));
 			unset($userid);
 			
 			
