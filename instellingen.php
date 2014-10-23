@@ -15,6 +15,7 @@ if(isset($_SESSION['user'])){
 
 		include 'deleteform.php';
 		include 'wwform.php';
+		include 'emailform.php';
 ?>
 </div>
 

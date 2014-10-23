@@ -16,16 +16,27 @@
             if($new=="" or $new1==""){
 				echo "voer de velden in aub";
 			}
-			if($new==$new1){
-				$userid=$_SESSION['userid'];
-				mysqli_query($con,"UPDATE users SET password='$new' WHERE ID= '$userid'") or die('Er is iets fout gegaan. Probeer het later opnieuw.');
-                SESSION_DESTROY();
-                ?>
-<script>
-window.location.href = "index.php"; 
-</script>
- <?php
+				$checkvalue = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
+				$numvalue = mysqli_num_rows($checkvalue);
+	
+						if($numvalue == 1){
+							while($row = mysqli_fetch_array($checkvalue)){
+								$email = $row['email'];
+								$date = date("YmdHis" ,strtotime($row['registrationdate']));
+							
+								$password = salt($username, $password, $email, $date);
+								$new=$password;
+				
+				if($new==$new1){
+					$userid=$_SESSION['userid'];
+					mysqli_query($con,"UPDATE users SET password='$new' WHERE ID= '$userid'") or die('Er is iets fout gegaan. Probeer het later opnieuw.');
+					SESSION_DESTROY();
+				}
 			}
+		}
+	
+				
+			
 			else{
 			echo '
                 <div class="alert alert-danger">
@@ -46,4 +57,12 @@ window.location.href = "index.php";
 </div>
 </div>
 
-<?php include 'footer.php';?>   
+
+
+<?php 
+header ('Location: instellingen.php?failed');
+include 'footer.php';?>   
+
+<script type="text/javascript">
+window.location.href = "index.php"; 
+</script>
