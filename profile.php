@@ -68,7 +68,7 @@
 
                 <div class="col-lg-9">
 			<?php
-		$gettimeline = mysqli_query($con, "SELECT * FROM messages WHERE user = '$profileuser' ORDER BY messagedate") or die(mysqli_error($con));
+		$gettimeline = mysqli_query($con, "SELECT * FROM messages WHERE user = '$profileuser' ORDER BY messagedate DESC") or die(mysqli_error($con));
 		while($row = mysqli_fetch_array($gettimeline)){
 
 			echo '
