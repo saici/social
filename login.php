@@ -42,13 +42,33 @@ $checkpage = 'true';
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+	function check(){
+		var pass1 = document.getElementById('firstpass').value;
+		var pass2 = document.getElementById('secondpass').value;
+		
+		if(pass2 != ""){
+			if(pass1 == pass2){
+				document.getElementById('passincorrect').style.visibility='hidden';
+				document.getElementById('passincorrect').style.height="0px";
+
+
+			}
+			else{
+				document.getElementById('passincorrect').style.visibility='visible';
+			}
+		}
+     }
+    </script>
+
 
 </head>
 
@@ -92,7 +112,15 @@ $checkpage = 'true';
     <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten.
 </div>
 									';
-								}0
+								}
+									?>
+																	<?php if(isset($_GET['register'])){ echo'
+									<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Gelukt!</strong> Log in met je nieuwe account om de registratie te voltooien.
+</div>
+									';
+								}
 									?>
 																	<?php if(isset($_GET['removed'])){ echo'
 									<div class="alert alert-info">
@@ -121,8 +149,8 @@ $checkpage = 'true';
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                <h1 class="brand-heading">Registreer</h1>
-               <form action="includes/login.php" method="post">
-								<?php if(isset($_GET['failed'])){ echo'
+               <form action="includes/register.php" method="post">
+								<?php if(isset($_GET['regfailed'])){ echo'
 									<div class="alert alert-danger">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten.
@@ -130,10 +158,17 @@ $checkpage = 'true';
 									';
 								}0
 									?>
-		<input type="text"class="form-control" placeholder="Gebruikersnaam" name="username"><br>
-		<input type="password" class="form-control" style="input-placeholder{color: red;}"placeholder="Wachtwoord" name="password"><br>
-		
-		<a href="#about" style="width: 150px;"class="btn btn-primary page-scroll ">Registreer</a>
+		<input type="text"class="form-control" placeholder="Gebruikersnaam" name="registerusername"><br>
+		<input type="password" id="firstpass" autocomplete='off' onchange="check();"
+ onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"class="form-control" style="input-placeholder{color: red;}"placeholder="Wachtwoord" name="registerpassword"><br>
+		<input type="password" id="secondpass" class="form-control" style="input-placeholder{color: red;}"placeholder="Herhaal wachtwoord" autocomplete='off' onchange="check();"
+ onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" name="registerreppassword"><br>
+		<div id="passincorrect" style="visibility: hidden;"class="alert alert-danger">
+			
+			<strong>Fout</strong> De 2 wachtwoorden komen niet overeen.
+		</div>
+		<input type="text" class="form-control" placeholder="Email adres" name="registeremail"><br />
+		<input type="submit" style="width: 150px;"class="btn btn-primary page-scroll " value="Registreer">
                          
                         
 	</form>

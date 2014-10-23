@@ -11,9 +11,9 @@
 	if($numvalue == 1){
 		while($row = mysqli_fetch_array($checkvalue)){
 			$email = $row['email'];
-			$date = date("YmdHis" ,strtotime($row['registerdate']));
+			$date = date("YmdHis" ,strtotime($row['registrationdate']));
 			
-			//$password = salt($password, $email, $date);
+			$password = salt($username, $password, $email, $date);
 			
 			$checkpassword = mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
 			$numpass = mysqli_num_rows($checkpassword);
