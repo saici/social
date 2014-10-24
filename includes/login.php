@@ -7,6 +7,7 @@
 	
 	$checkvalue = mysqli_query($con, "SELECT * FROM users WHERE username = '$username'");
 	$numvalue = mysqli_num_rows($checkvalue);
+
 	
 	if($numvalue == 1){
 		while($row = mysqli_fetch_array($checkvalue)){
@@ -15,8 +16,10 @@
 			
 			$password = salt($username, $password, $email, $date);
 			
-			$checkpassword = mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password = '$password'");
+			$checkpassword = mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password = '$password'") or die(mysqli_error($con));
 			$numpass = mysqli_num_rows($checkpassword);
+			echo "NUMPASS : " . $numpass . "<br />";
+			echo $password;
 			if($numpass == 1){
 				$_SESSION['user'] = $username;
 				$_SESSION['userid'] = $row['ID'];

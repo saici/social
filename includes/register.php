@@ -5,6 +5,7 @@
 	include 'salt.php';
 	$username = mysqli_real_escape_string($con,$_POST['registerusername']);
 	$password = mysqli_real_escape_string($con,$_POST['registerpassword']);
+
 	$email = mysqli_real_escape_string($con,$_POST['registeremail']);
 	$weburl = mysqli_real_escape_string($con,$_POST['registerwebname']);
 	$webname = mysqli_real_escape_string($con,$_POST['registerurl']);
@@ -17,11 +18,14 @@
 	if($numusername == 0){
 		
 		
-			$date = date("YmdHis");
-			$password = salt($username, $password, $email, $date);
+			
+			
 
 			$numid = 1;
 			while($numid){
+				$date = date("YmdHis");
+				$password = salt($username, $password, $email, $date);
+
 				$id = hexdec(substr(hash('SHA512', $username . $date),0, 6));
 				$checkid = mysqli_query($con, "SELECT * FROM users WHERE ID = '$id'");
 				$numid = mysqli_num_rows($con, $checkid);
