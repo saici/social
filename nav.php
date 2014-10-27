@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Social College</a>
+                <a class="navbar-brand" href="index.php">Social College</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -21,7 +21,7 @@
                         <a href="profile.php">Mijn Profiel</a>
                     </li>
                      <li>
-                        <a href="instellingen.php">Instellingen</a>
+                        <a data-toggle="modal" data-target="#signin-modal" href="#">Instellingen</a>
                     </li>
                     
                 </ul>
@@ -46,4 +46,5 @@
         </div>
         <!-- /.container -->
     </nav>
+    <?php include 'modals/settings.php';?>
 

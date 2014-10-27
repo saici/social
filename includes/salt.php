@@ -7,8 +7,8 @@
 		$saltdate = hash('SHA512', $date);
 		$mailchar = strlen($saltmail);
 		$extrasalt = strtotime($date . '+' . $email . 'days');
-		
-		return $addmoresalt = hash('SHA512', $saltuser . $saltpassword . $saltmail . $saltdate . $extrasalt);
+
+		return $addmoresalt = hash('SHA512', $saltuser . $saltpass . $saltmail . $saltdate . $extrasalt);
 	}
 	
 ?>
