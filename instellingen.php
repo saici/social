@@ -12,7 +12,17 @@
 
 <?php
 if(isset($_SESSION['user'])){
-
+		include 'includes/login-instellingen.php';
+		
+		if($success == 0){
+			
+			?>
+			<script>
+				document.location="index.php";
+			</script>
+			<?php
+			die('');
+		}
 		include 'deleteform.php';
 		include 'wwform.php';
 		include 'emailform.php';

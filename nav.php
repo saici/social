@@ -21,7 +21,7 @@
                         <a href="profile.php">Mijn Profiel</a>
                     </li>
                      <li>
-                        <a href="instellingen.php">Instellingen</a>
+                        <a data-toggle="modal" data-target="#signin-modal" href="#">Instellingen</a>
                     </li>
                     
                 </ul>
@@ -46,4 +46,5 @@
         </div>
         <!-- /.container -->
     </nav>
+    <?php include 'modals/settings.php';?>
 
