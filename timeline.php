@@ -45,7 +45,7 @@
 		<i class="fa fa-youtube"></i> YouTube
 	</a> 
 	</li>
-    <li><a href="#">Another action</a></li>
+    <li><a href="#"  data-target="#imagemodal" data-toggle="modal"><i class="fa fa-picture-o"></i> Foto</a></li>
     <li><a href="#">Something else here</a></li>
     <li class="divider"></li>
     <li><a href="#">Separated link</a></li>
@@ -55,7 +55,7 @@
 
 <?php
 	include 'modals/youtube.php';
-
+	include 'modals/image.php';
 	if(isset($_SESSION['user'])){
 			
 			$user = $_SESSION['userid'];
