@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="myModalLabel"> <i class="fa fa-unlock-alt"></i> Wachtwoord controle</h4>
       </div>
       <div class="modal-body">
-        <form action="instellingen.php" method="POST">
+        <form action="settings.php" method="POST">
 			<p>Om uw veiligheid te garanderen vragen wij U om uw wachtwoord te herhalen.</p>
 			<input class="form-control" placeholder="Wachtwoord" type="password" style="width: 100%;" name="password" id="password">
 			

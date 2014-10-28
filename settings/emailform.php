@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<form action ="veranderemail.php" method="post">
+<form action ="changeemail.php" method="post">
 <br>
 new email adress<input type="text" name="new">
 
