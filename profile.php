@@ -23,9 +23,11 @@
 			
 			?>
 				<?php echo '<header class="image-bg-fluid-height" style="background-image: url(' . $row['banner'] . ')">'; ?>
-       <?php echo '<img img-responsive img-center src="' . $row['avatar'] . '" width="128px" height="128px">'; ?>
+       <?php echo '<img img-responsive img-center style="float:middle;" src="' . $row['avatar'] . '" width="128px" height="128px"><br> <h1 style="Color: white;">' . ucfirst($profileusername). '</h1>' ; ?>
+        
     </header>
     
+   
 
 			<?php
 			$bio = $row['bio'];
@@ -39,12 +41,28 @@
 					
 					    <div class="media">
 				<div class="well">
-					<h3>Over <?php echo $profileusername?></h3>
-                    <a class="pull-left" href="#"></a><?php echo $bio;?>
-				
+					<h3>Over <?php echo ucfirst($profileusername);?></h3>
+                    <a class="pull-left" href="#"></a><?php if($bio == "NONESET"){ echo "Je hebt nog geen biografie ingesteld. Dit kan je instellen op de instellingen pagina!"; } else { echo $bio; }?>
+					<hr>
+					<?php 
+					$user = $_SESSION['userid'];
+					$checkiffollows = mysqli_query($con, "SELECT * FROM followers WHERE user='$user' AND follows = '$profileuser'") or die(mysqli_error($con));
+					
+					if(mysqli_num_rows($checkiffollows) == 0){
+						if($profileuser == $_SESSION['userid']){ 
+						
+						} 
+						else{ 
+							echo '<div class="follow" ><form action="includes/addfriend.php" METHOD="POST"><input type="hidden" name="user" value="' . $profileuser . '"><input type="submit" class="btn btn-success btn" value="Volgen"></div>';
+						}
+					}
+					else{
+													echo '<div class="follow" ><form action="includes/unfollow.php" METHOD="POST"><input type="hidden" name="user" value="' . $profileuser . '"><input type="submit" class="btn btn-danger btn" value="Ontvolgen"></div>';
+					}
+					?>
 				</div>
 				<div class="well" style="overflow: collapse;">
-					<h3>Foto's van <?php echo $profileusername?></h3>
+					<h3>Foto's van <?php echo ucfirst($profileusername);?></h3>
                     <?php 
 						$query2 = mysqli_query($con, "SELECT * FROM messages WHERE user = '$profileuser' AND photo <> '0'") or die(mysqli_error($con));
 						$numphotos = mysqli_num_rows($query2);
