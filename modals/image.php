@@ -9,8 +9,8 @@
       <div class="modal-body">
         <form action="includes/uploadimg.php" method="POST"  enctype="multipart/form-data">
 			
-			<input type="file" name="uploadFile">
-		
+			<input type="file" name="uploadFile"><br />
+			<textarea class="form-control" style="width: 100%;" name="desc" placeholder="Beschrijving"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>

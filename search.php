@@ -10,8 +10,8 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 		<?php
-	if(isset($_GET['q']) AND !$_GET['q'] == ""){
-		$q = "%" . mysqli_real_escape_string($con, $_GET['q'])  . '%';
+	if(isset($_POST['q']) AND !$_POST['q'] == ""){
+		$q = "%" . mysqli_real_escape_string($con, $_POST['q'])  . '%';
 		$query = mysqli_query($con, "SELECT ID, username FROM users WHERE username LIKE('$q')") or die(mysqli_error($con));
 		echo mysqli_num_rows($con, $query);
 		if(mysqli_num_rows($con, $query) == 0){
@@ -29,7 +29,7 @@
 				echo '
 				<div class="col-xs-3">
 					<a href="profile.php?id=' . $id . '" class="thumbnail">
-						<img width="170px" height="170px" src="' . $row2['avatar']. '" alt="100%x180"><br />
+						<img width="170px" id="photo1" height="170px" src="' . $row2['avatar']. '" alt="100%x180"><br />
 						<center>' . ucfirst($row['username']) . '</center>
 					</a>
 				</div>

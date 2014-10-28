@@ -6,8 +6,10 @@ $user =mysqli_query($con, "SELECT * FROM followers WHERE user='$username1'") or 
 $friends = array();
 while($row = mysqli_fetch_array($user)){
 		$singlefriend = $row['follows'];
+		if(!in_array($singlefriend,$friends)){
 			array_push($friends, $singlefriend);
 		}
+	}
 
 echo "uw vrienden zijn: <br>" ;
 foreach($friends as $value){
