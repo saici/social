@@ -131,7 +131,7 @@
                 </div>
                ';		
 							
-				
+				include 'modals/show-image.php';
 				
 				
                unset($getuser);

@@ -51,9 +51,9 @@
 						if(!$numphotos == 0){
 							while($row = mysqli_fetch_array($query2)){
 								echo ' 
-								<div onclick="newimage(' . $row['photo']. ')" style="width: 48%; float: left;box-sizing: inline-block;">
+								<div height="91" onclick="newimage(' . $row['photo']. ')" style="width: 48%; float: left;box-sizing: inline-block;">
 								<a href="#"  data-target="#showimagemodal" data-toggle="modal" class="thumbnail">
-      <img src="http://localhost/social/images/' . $row['photo'] . '" alt="">
+      <img height="81" src="http://localhost/social/images/' . $row['photo'] . '" alt="">
     </a>
     </div>
    ';
