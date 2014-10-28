@@ -42,23 +42,8 @@ $checkpage = 'true';
 
 </head>
 <?php include 'timelinejavascript.php';?>
-	<script>
-
-  $(function() {
-    var availableTags = [
-      <?php 
-      $query = mysqli_query($con, "SELECT username FROM users");
-      while($row = mysqli_fetch_array($query)){
-		echo '"' . $row ['username']. '",';
-	  }
-	  ?>
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  });
-  </script>
-	</script>
+<?php include 'javascriptprofile.php';?>
+	
 </head>
 <body>
 	<?php include 'nav.php'; ?>

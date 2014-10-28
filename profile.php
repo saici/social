@@ -35,7 +35,7 @@
 			    <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
 					
 					    <div class="media">
 				<div class="well">
@@ -43,19 +43,28 @@
                     <a class="pull-left" href="#"></a><?php echo $bio;?>
 				
 				</div>
-				<div class="well">
+				<div class="well" style="overflow: collapse;">
 					<h3>Foto's van <?php echo $profileusername?></h3>
                     <?php 
-						$query2 = mysqli_query($con, "SELECT * FROM messages WHERE ID = '$profileuser' AND photo = '1'");
-						$numphotos = mysqli_num_rows($query);
+						$query2 = mysqli_query($con, "SELECT * FROM messages WHERE user = '$profileuser' AND photo <> '0'") or die(mysqli_error($con));
+						$numphotos = mysqli_num_rows($query2);
 						if(!$numphotos == 0){
 							while($row = mysqli_fetch_array($query2)){
-								echo $row['message'];
+								echo ' 
+								<div onclick="newimage(' . $row['photo']. ')" style="width: 48%; float: left;box-sizing: inline-block;">
+								<a href="#"  data-target="#showimagemodal" data-toggle="modal" class="thumbnail">
+      <img src="http://localhost/social/images/' . $row['photo'] . '" alt="">
+    </a>
+    </div>
+   ';
+								
 							}
+							echo '<div style="clear: both;"></div>';
 						}
 						else{
 								echo 'Geen foto\'s gevonden.';
 							}
+							include 'modals/show-image.php';
 							
 						
                     ?>
@@ -66,7 +75,7 @@
 
 			        <div class="container">
 
-                <div class="col-lg-9">
+                <div class="col-lg-8">
 			<?php
 		$gettimeline = mysqli_query($con, "SELECT * FROM messages WHERE user = '$profileuser' ORDER BY messagedate DESC") or die(mysqli_error($con));
 		while($row = mysqli_fetch_array($gettimeline)){
