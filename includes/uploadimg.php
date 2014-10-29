@@ -39,7 +39,7 @@
 				}
 				$target_dir = $target_dir . $id;
 			
-				die($target_dir);
+				
 				$post = '<table><tr><td><img style="max-width: 560px; max-height: 315px;"  onclick="newimage(' . $id . ')"   data-target="#showimagemodal" data-toggle="modal"  src="http://' .  $_SERVER['SERVER_NAME'] . '/social/images/' . $id . '"></td></tr><tr><td>' . $extramessage . '</td></tr></table>';
 				echo $photo;
 				move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir);
