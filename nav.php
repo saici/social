@@ -37,6 +37,20 @@
                         
                     </div>
       </form>
+      <li class="dropdown">
+			<?php
+				$user = $_SESSION['userid'];
+				$query = mysqli_query($con, "SELECT * FROM notifications WHERE user = '$user'");
+				
+			?>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <span class="badge"><?php echo mysqli_num_rows($query);?></span> <span class="caret"></span></a>
+              <ul class="dropdown-menu message-dropdown" role="menu">
+
+				<?php include 'includes/notifications.php';?>
+                        
+                        
+              </ul>
+            </li>
       <li>
                         <a href="login.php?logout">Log uit</a>
                     </li>
