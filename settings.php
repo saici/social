@@ -51,7 +51,7 @@ if(isset($_SESSION['user'])){
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="personalisatie"><?php include 'settings/avatarupload.php'; include 'settings/bannerupload.php';?></div>
+  <div class="tab-pane active" id="personalisatie"><?php include 'settings/avatarupload.php'; include 'settings/bannerupload.php'; include 'settings/bio.php';?></div>
   <div class="tab-pane" id="gegevens"><?php include 'settings/emailform.php'; ?></div>
   <div class="tab-pane" id="changeww"><?php include 'settings/passwordform.php'; ?></div>
   <div class="tab-pane" id="remacc"><?php include 'settings/deleteform.php'; ?></div>

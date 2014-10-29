@@ -3,11 +3,11 @@
 
 	
 		if(isset($_SESSION['userid'])){
-			$user = $_SESSION['userid'];
+				$user = $_SESSION['userid'];
 
-				$photo = mysqli_real_escape_string($con, $_POST['uploadFile']);
+				$photo = mysqli_real_escape_string($con, $_POST['bio']);
 				
-				mysqli_query($con, "UPDATE profile SET banner='$photo' WHERE ID = '$user'") or die(mysqli_error($con));
+				mysqli_query($con, "UPDATE profile SET bio='$photo' WHERE ID = '$user'") or die(mysqli_error($con));
 				header("Location: ../profile.php");
 			
 
