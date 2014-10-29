@@ -19,17 +19,19 @@
 			$extramessage = mysqli_real_escape_string($con, $_POST['desc']);
 			$photo = "http://" .  $_SERVER['SERVER_NAME'] . "/social/images/" . $_FILES["uploadFile"]["name"];
 			
-			$post = '<table><tr><td><img style="max-width: 560px; max-height: 315px;" src="http://' .  $_SERVER['SERVER_NAME'] . '/social/images/' . $_FILES["uploadFile"]["name"] . '"></td></tr><tr><td>' . $extramessage . '</td></tr></table>';
-
 			
-			$query = mysqli_query($con, "SELECT * FROM messages WHERE user = '$user' ORDER BY ID LIMIT 1") or die(mysqli_error($con));
+			
+			$query = mysqli_query($con, "SELECT * FROM messages WHERE user = '$user' ORDER BY ID DESC LIMIT 1") or die(mysqli_error($con));
 			while($row = mysqli_fetch_array($query)){
 				$id = $row['ID'];
 				$target_dir = $target_dir . '/' . $id;
+				$post = '<table><tr><td><img style="max-width: 560px; max-height: 315px;"  onclick="newimage(' . $id . ')"   data-target="#showimagemodal" data-toggle="modal"  src="http://' .  $_SERVER['SERVER_NAME'] . '/social/images/' . $id . '"></td></tr><tr><td>' . $extramessage . '</td></tr></table>';
+
 				move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir);
 				$photo = $id;
 				echo $photo;
 				mysqli_query($con, "INSERT INTO messages(user,message, messagedate, photo) VALUES ('$user', '$post', NOW(), '$photo')") or die(mysqli_error($con));
+				header("Location: ../index.php");
 			}
 
 				

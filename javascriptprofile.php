@@ -2,7 +2,7 @@
      function newimage(image){
 		
 		
-		document.getElementById('modalimage').src = "http://localhost/social/images/" + image;
+		document.getElementById('modalimage').src = "http://185.13.226.55/social/images/" + image;
 	
 
      }
