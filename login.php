@@ -58,7 +58,7 @@ $checkpage = 'true';
 		if(pass2 != ""){
 			if(pass1 == pass2){
 				document.getElementById('passincorrect').style.visibility='hidden';
-				document.getElementById('passincorrect').style.height="0px";
+				
 
 
 			}
@@ -167,7 +167,7 @@ $checkpage = 'true';
 			
 			<strong>Fout</strong> De 2 wachtwoorden komen niet overeen.
 		</div>
-		<input type="text" class="form-control" placeholder="Email adres" name="registeremail"><br />
+		<input type="email" class="form-control" placeholder="Email adres" name="registeremail"><br />
 		<input type="submit" style="width: 150px;"class="btn btn-primary page-scroll " value="Registreer">
                          
                         
