@@ -34,6 +34,7 @@
 					else{
 						
 					}
+				}
 				$target_dir = $target_dir . '/' . $id;
 				$post = '<table><tr><td><img style="max-width: 560px; max-height: 315px;"  onclick="newimage(' . $id . ')"   data-target="#showimagemodal" data-toggle="modal"  src="http://' .  $_SERVER['SERVER_NAME'] . '/social/images/' . $id . '"></td></tr><tr><td>' . $extramessage . '</td></tr></table>';
 
