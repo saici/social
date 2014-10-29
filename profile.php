@@ -22,8 +22,22 @@
 		while($row = mysqli_fetch_array($getinfo)){
 			
 			?>
-				<?php echo '<header class="image-bg-fluid-height" style="background-image: url(' . $row['banner'] . ')">'; ?>
-       <?php echo '<img img-responsive img-center style="float:middle;" src="' . $row['avatar'] . '" width="128px" height="128px"><br> <h1 style="Color: white;">' . ucfirst($profileusername). '</h1>' ; ?>
+				<?php
+				if($row['banner']=="NONESET"){  
+					$banner = "http://img4.wikia.nocookie.net/__cb20140603164657/p__/protagonist/images/b/b0/Blue-energy.jpg";
+				}
+				else{
+					$banner = $row['banner'];
+				} 
+				if($row['avatar']=="NONESET"){  
+					$avatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+				}
+				else{
+					$avatar = $row['avatar'];
+				} 
+				
+				 echo '<header class="image-bg-fluid-height" style="background-image: url(' . $banner . ')">'; ?>
+       <?php echo '<img img-responsive img-center class="well" style="float:middle;" src="' . $avatar . '" width="128px" height="128px"><br> <h1 style="Color: white;">' . ucfirst($profileusername). '</h1>' ; ?>
         
     </header>
     
@@ -96,20 +110,30 @@
                 <div class="col-lg-8">
 			<?php
 		$gettimeline = mysqli_query($con, "SELECT * FROM messages WHERE user = '$profileuser' ORDER BY messagedate DESC") or die(mysqli_error($con));
+		if(mysqli_num_rows($gettimeline) == 0){
+			?>
+			<div class="media">
+				<div class="well">
+					<b>Nog geen berichten</b> Deze gebruiker heeft nog geen berichten gemaakt.
+				</div>
+			</div>
+			<?php
+		}
+		else{
 		while($row = mysqli_fetch_array($gettimeline)){
 
 			echo '
 				<div class="media">
 				<div class="well">
                     <a class="pull-left" href="#">
-                        <img class="media-object" height="64" width="64" src="http://www.phantomshockey.com/wp-content/uploads/2014/07/profile-icon.png
+                        <img class="media-object" height="64" width="64" src="' . $avatar . '
 " alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">' . ucfirst($profileusername) . '
                             <small>2014-10-21 13:28:13</small>
                         </h4>
-                       ' . $row['message'] . '<br><a href="index.php?re=test&amp;user=1">Repost</a>
+                       ' . $row['message'] . '<br>
                     </div>
                 </div>
                 </div>
@@ -118,6 +142,7 @@
 			
 		
 		}
+	}
 					?>
 			               </div>
             </div>

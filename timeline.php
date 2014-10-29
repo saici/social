@@ -97,7 +97,13 @@
 				
 				$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$getuser'");
 				while($info = mysqli_fetch_array($getavatar)){
+
+				if($info['avatar']=="NONESET"){  
+					$avatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+				}
+				else{
 					$avatar = $info['avatar'];
+				} 
 				}
 				
 				$message = $row['message'];
