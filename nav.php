@@ -40,7 +40,7 @@
       <li class="dropdown">
 			<?php
 				$user = $_SESSION['userid'];
-				$query = mysqli_query($con, "SELECT * FROM notifications WHERE user = '$user'");
+				$query = mysqli_query($con, "SELECT * FROM notifications WHERE touser = '$user'");
 				
 			?>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <span class="badge"><?php echo mysqli_num_rows($query);?></span> <span class="caret"></span></a>

@@ -1,6 +1,11 @@
-<?php 
-include 'includes/connect.php';
+<?php
 
+	if(isset($_GET['upload'])){
+		header("Location: profile.php");
+		
+	}
+include 'includes/connect.php';
+	
 
 	if(isset($_GET['like'])){
 		$likeid = mysqli_real_escape_string($con, $_GET['like']);
@@ -13,8 +18,13 @@ include 'includes/connect.php';
 			while($row = mysqli_fetch_array($getusername)){
 				$usernameresult = ucfirst($row['username']);
 			}
+			$getreceiver = mysqli_query($con, "SELECT user FROM messages WHERE ID = '$likeid'") or die(mysqli_error($con));
+			while($row = mysqli_fetch_array($getreceiver)){
+				$touser = $row['user'];
+			}
 			$message = $usernameresult . " heeft je bericht geliked!";
-			mysqli_query($con, "INSERT INTO notifications(user, date, notification, img, url, type) VALUES('$user', NOW(), '$message', '1', '', '1')") or die(mysqli_error($con));
+			
+			mysqli_query($con, "INSERT INTO notifications(user, touser, date, notification, img, url, type) VALUES('$user', '$touser',NOW(), '$message', '1', '$likeid', '1')") or die(mysqli_error($con));
 			header("Location: index.php");
 		}
 	}

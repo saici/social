@@ -4,7 +4,7 @@
 					 }
 					 $user = $_SESSION['userid'];
 					 
-					 $query = mysqli_query($con, "SELECT * FROM notifications WHERE user ='$user'");
+					 $query = mysqli_query($con, "SELECT * FROM notifications WHERE touser ='$user'");
 					 if(mysqli_num_rows($query) == 0){
 						echo "<center>Geen berichten!</center>";
 					 }
@@ -12,7 +12,7 @@
 
 					 ?>
 					  <li class="message-preview">
-                            <a href="#">
+                            <a href="message.php?id=<?php echo $row['ID'];?>">
                                 <div class="media" style="min-width: 300px;">
                                     <span class="pull-left">
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
