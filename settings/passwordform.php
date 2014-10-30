@@ -2,7 +2,7 @@
 <body>
 <table>
 <tr>
-<form action="changepassword.php" method="post">
+<form action="settings/changepassword.php" method="post">
 <td>Nieuw wachtwoord: </td><td><input type="password" name="new"></td>
 </tr>
 <tr>
