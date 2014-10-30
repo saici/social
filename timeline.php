@@ -112,7 +112,7 @@
 		echo ' 
 				<div class="media">
 				<div class="well">
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="profile.php?id='. $getuser . '">
                         <img class="media-object" height="64" width="64" src="' . $avatar . '" alt="">
                     </a>
                     <div class="media-body">
