@@ -51,8 +51,11 @@
                         
               </ul>
             </li>
-      <li>
-                        <a href="login.php?logout">Log uit</a>
+       <li class="dropdown">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user'];?></span> <span class="caret"></a>
+                       <ul class="dropdown-menu message-dropdown" role="menu">
+						<li><a href="login.php?logout">Log uit</a></li>   
+						</ul>
                     </li>
       </ul>
             </div>
