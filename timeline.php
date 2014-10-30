@@ -1,3 +1,5 @@
+
+
 <!-- Page Content -->
     <div class="container">
 
@@ -5,20 +7,7 @@
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
-<?php
-	if(isset($_GET['like'])){
-		$likeid = mysqli_real_escape_string($con, $_GET['like']);
-		mysqli_query($con, "UPDATE messages SET likes = likes + 1 WHERE ID = '$likeid'") or die(mysqli_error($con));
-		
-		header("location: index.php");
-	}
-	if(isset($_GET['dislike'])){
-		$dislikeid = mysqli_real_escape_string($con, $_GET['dislike']);
-		mysqli_query($con, "UPDATE messages SET dislikes = dislikes + 1 WHERE ID = '$dislikeid'") or die(mysqli_error($con));
-		
-		header("location: index.php");
-	}
-?>
+
 
 
 <!-- Modal -->
@@ -97,7 +86,13 @@
 				
 				$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$getuser'");
 				while($info = mysqli_fetch_array($getavatar)){
+
+				if($info['avatar']=="NONESET"){  
+					$avatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+				}
+				else{
 					$avatar = $info['avatar'];
+				} 
 				}
 				
 				$message = $row['message'];
