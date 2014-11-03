@@ -109,7 +109,7 @@ $checkpage = 'true';
 								<?php if(isset($_GET['failed'])){ echo'
 									<div class="alert alert-danger">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten.
+    <strong>Fout</strong> De gegevens die je hebt ingevuld zijn onjuist. Controleer voor spel/type fouten. Mogelijk is uw account nog niet geactiveerd.
 </div>
 									';
 								}
@@ -128,7 +128,15 @@ $checkpage = 'true';
     <strong>Verwijderd</strong> Je account is succesvol verwijderd.
 </div>
 									';
-								}0
+								}
+									?>
+									<?php if(isset($_GET['notactive'])){ echo'
+									<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Niet actief</strong> Je account is niet actief, controleer of je al een activatiemail hebt ontvangen.
+</div>
+									';
+								}
 									?>
 		<input type="text"class="form-control" placeholder="Gebruikersnaam" name="username"><br>
 		<input type="password" class="form-control" style="input-placeholder{color: red;}"placeholder="Wachtwoord" name="password"><br>
