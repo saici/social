@@ -128,7 +128,15 @@ $checkpage = 'true';
     <strong>Verwijderd</strong> Je account is succesvol verwijderd.
 </div>
 									';
-								}0
+								}
+									?>
+									<?php if(isset($_GET['notactive'])){ echo'
+									<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Verwijderd</strong> Je account is niet actief.
+</div>
+									';
+								}
 									?>
 		<input type="text"class="form-control" placeholder="Gebruikersnaam" name="username"><br>
 		<input type="password" class="form-control" style="input-placeholder{color: red;}"placeholder="Wachtwoord" name="password"><br>

@@ -34,7 +34,32 @@
 			$query = "INSERT INTO users (username, password, email, registrationdate, ID) VALUES ('$username', '$password', '$email', '$date', '$id')";
 			mysqli_query($con, $query) or die (mysqli_error($con));
 			mysqli_query($con, "INSERT INTO profile (user, avatar, bio, banner, ID) VALUES ('$id', 'NONESET', 'NONESET', 'NONESET' , '$id')") or die(mysqli_error($con));
-			
+			$activatehash = md5(substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 20));
+			mysqli_query($con, "INSERT INTO activate (user, hash) VALUES ('$id', '$activatehash')");
+			// multiple recipients
+$to  = $email;
+
+// subject
+$subject = 'Activeer uw account';
+
+// message
+$message = '
+<p>Activeer uw account door op <a href="http://185.13.226.55?activate=' . $activatehash . '">deze link</a> te klikken.</p>
+';
+
+// To send HTML mail, the Content-type header must be set
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Additional headers
+$headers .= 'To: ' . $email . "\r\n";
+$headers .= 'From: Social College <noreply@socialcollege.tk>' . "\r\n";
+
+
+// Mail it
+mail($to, $subject, $message, $headers);
+
+
 			header("location: ../login.php?register");
 		
 		

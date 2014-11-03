@@ -16,7 +16,16 @@
 			
 			$password = salt($username, $password, $email, $date);
 			
-			$checkpassword = mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password = '$password'") or die(mysqli_error($con));
+			$checkpassword = mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password = '$password' ") or die(mysqli_error($con));
+			$checkactive = mysqli_query($con, "SELECT active FROM users WHERE username = '$username'") or die(mysqli_error($con));
+			
+			while($checkactiverow = mysqli_fetch_array($checkactive)){
+				$active = $checkactiverow['active'];
+				if($active == 0){
+					header("location: ../login.php?notactive");
+					
+				}
+			}
 			$numpass = mysqli_num_rows($checkpassword);
 			
 			if($numpass == 1){
