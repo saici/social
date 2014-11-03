@@ -4,7 +4,7 @@
 		$hash = mysqli_real_escape_string($con, $_GET['hash']);
 		$checkhash = mysqli_query($con, "SELECT * FROM activate WHERE hash = '$hash'") or die(mysqli_error($con));
 		$numhash = mysqli_num_rows($checkhash);
-		
+		echo $numhash;
 		if($numhash == 1){
 			while($row = mysqli_fetch_array($checkhash)){
 				$user = $row['user'];
