@@ -23,7 +23,7 @@
 				$active = $checkactiverow['active'];
 				if($active == 0){
 					header("location: ../login.php?notactive");
-					
+					die();
 				}
 			}
 			$numpass = mysqli_num_rows($checkpassword);

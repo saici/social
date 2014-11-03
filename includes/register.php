@@ -1,6 +1,4 @@
-
 <?php 
-
 	include 'connect.php';
 	include 'salt.php';
 	$username = mysqli_real_escape_string($con,$_POST['registerusername']);
@@ -44,7 +42,7 @@ $subject = 'Activeer uw account';
 
 // message
 $message = '
-<p>Activeer uw account door op <a href="http://185.13.226.55?activate=' . $activatehash . '">deze link</a> te klikken.</p>
+<p>Activeer uw account door op <a href="http://185.13.226.55?activate.php?hash=' . $activatehash . '">deze link</a> te klikken.</p>
 ';
 
 // To send HTML mail, the Content-type header must be set
