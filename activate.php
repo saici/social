@@ -7,7 +7,7 @@
 		if($numhash == 1){
 			while($row = mysqli_fetch_array($checkhash)){
 				$user = $row['user'];
-				mysqli_query($con, "UPDATE users SET active='1' WHERE user = '$user'");
+				mysqli_query($con, "UPDATE users SET active='1' WHERE ID = '$user'");
 				headers("Location: index.php");
 			}
 		}
