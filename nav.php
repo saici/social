@@ -23,6 +23,9 @@
                      <li>
                         <a data-toggle="modal" data-target="#signin-modal" href="#">Instellingen</a>
                     </li>
+						<li>
+							<a href="forum.php">Forum</a>
+						</li>
                     
                 </ul>
 <ul class="nav navbar-nav navbar-right">
