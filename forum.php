@@ -19,9 +19,17 @@ include "header.php";
 									<input type="submit" class="btn btn-primary" value="Aanmaken">
 										</form>
 							<?php
-								$firsttopic=mysqli_query($con,"SELECT * FROM topics WHERE firsttopic='1'");
-								$numvalue = mysqli_num_rows($firsttopic);
-								echo $numvalue;
+								$firsttopic=mysqli_query($con,"SELECT topicname FROM topics WHERE firsttopic='1'");
+								
+								
+								while($row= mysqli_fetch_array($firsttopic))	{
+										
+										foreach($row as $value){
+										echo $row['topicname'];
+									}
+								}
+								
+								
 								
 							?>
 				</div>
