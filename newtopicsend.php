@@ -6,20 +6,20 @@ if(isset($_POST['titelname']) and isset($_POST['message']) and isset ($_POST['ca
 		$message = mysqli_real_escape_string($con,$_POST['message']);
 		$category= mysqli_real_escape_string($con,$_POST['catergory']);
 		$user = $_SESSION['userid'];
-		//TOPIC ID IS NIET NULL!!!! FIXXXXX
+		echo $_POST['topicid'];6
 	if($_POST['topicid'] == "NONE"){
 			$id = 1;
 	
 			while($id){
 				$topicid = mt_rand(100000, 999999);
 				echo $topicid;
-				die();
+
 				$checkiffree = mysqli_query($con, "SELECT * FROM topics WHERE topicid = '$topicid'");
 				
 				$id = mysqli_num_rows($checkiffree);
 			}
 		
-			die();
+			
 			$messagesend= mysqli_query($con, "INSERT INTO topics ( topicname,message,firsttopic,category,user,datumfirst,datumlast,topicID) VALUES('$titelname','$message','1','$category', '$user', NOW() ,  NOW() , '$topicid' ) ") or die ("wtf waarom werkt het niet" . mysqli_error($con));
 	}
 	else{

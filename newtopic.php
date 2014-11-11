@@ -14,7 +14,7 @@ else{
         <div class="row">
 
             <!-- Blog Post Content Column -->
-            <div class="col-lg-9">
+            <div class="col-lg-12">
 
 							<div class="well">
 											<form action="newtopicsend.php" method="POST">
@@ -28,13 +28,13 @@ else{
 																	<option value="Niet-school">Niet school</option>
 
 																</select>
-																<input type="hidden" name="topicid" value="<?php echo $thread;?>" >
+																<input type="hidden" name="topicid" value="' . $thread . '" >
 																';
 														}
 														else{
 															echo'
 																
-																<input type="hidden" name="topicid" value="<?php echo $thread;?>" >
+																<input type="hidden" name="topicid" value="' . $thread . '" >
 																';
 														}
 													?>
@@ -53,3 +53,4 @@ else{
 				</div>
 		</div>
 </div>
+<?php include 'footer.php';?>
