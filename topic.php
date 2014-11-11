@@ -56,6 +56,7 @@ else{
 										' . ucfirst($row['message']) . '
 										</div>
 									</div>
+									<a style="margin-top: 20px; " class="btn btn-info btn-sm" href="">Quote</a>
 								</div>
 								';
 							}
@@ -70,3 +71,4 @@ else{
 		
 </div>
 			
+

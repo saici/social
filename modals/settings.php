@@ -1,5 +1,5 @@
 
-<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" id="signin-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog alert-danger">
     <div class="modal-content">
       <div class="modal-header alert-danger">
