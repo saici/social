@@ -11,30 +11,28 @@ include "header.php";
 
 							<div class="well">
 											<form action="newtopic.php" method="POST">
-											
-									<div class="form-group">
-									<h4>maak een nieuwe topic aan
-									</div>
+									
 										<!-- Button trigger modal -->
-									<input type="submit" class="btn btn-primary" value="Aanmaken">
+									<input type="submit" class="btn btn-primary" value="Nieuw Topic">
 										</form>
 										
 							</div>
 							
-							
-							
-							<?php
-								$firsttopic=mysqli_query($con,"SELECT * FROM topics WHERE firsttopic='1'");
+							<div class="well">
+								<h4>School</h4>
+								<ul class="list-group">
+								<?php
+								$firsttopic=mysqli_query($con,"SELECT * FROM topics WHERE firsttopic='1' AND category='school'");
 								
 									
 								while($row= mysqli_fetch_array($firsttopic))	{
 										
 										
-										echo  '<div class="well">
+										echo  '<li class="list-group-item">
 
-										<h4> ' . $row['topicname'] . '</h4>'
+										<a href="topic.php?id=' . $row['topicID']. '">' . $row['topicname'] . '</a>'
 										
-										. '</div>';
+										. '</li>';
 									
 								}
 								
@@ -43,6 +41,10 @@ include "header.php";
 								
 							?>
 				
+								</ul>
+							</div>
+							
+
 		</div>
 		
 		

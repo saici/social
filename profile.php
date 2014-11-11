@@ -56,7 +56,7 @@
 					    <div class="media">
 				<div class="well">
 					<h3>Over <?php echo ucfirst($profileusername);?></h3>
-                    <a class="pull-left" href="#"></a><?php if($bio == "NONESET"){ echo "Je hebt nog geen biografie ingesteld. Dit kan je instellen op de instellingen pagina!"; } else { echo $bio; }?>
+                    <form action="includes/setbio.php" method="POST"><a class="pull-left" href="#"></a><div id="biografie"><?php if($bio == "NONESET"){ echo "Je hebt nog geen biografie ingesteld. Dit kan je instellen op de instellingen pagina!"; } else { echo $bio; }?></div><?php if($_SESSION['userid'] == $profileuser){ echo '<a id="pencil" onclick="editbio()"><i class="fa fa-pencil"></i></a>'; }?></form>
 					<hr>
 					<?php 
 					$user = $_SESSION['userid'];
@@ -85,7 +85,7 @@
 								echo ' 
 								<div height="91" onclick="newimage(' . $row['photo']. ')" style="width: 48%; float: left;box-sizing: inline-block;">
 								<a href="#"  data-target="#showimagemodal" data-toggle="modal" class="thumbnail">
-      <img height="81" src="http://localhost/social/images/' . $row['photo'] . '" alt="">
+      <img height="81" src="http://socialcollege.tk/social/images/' . $row['photo'] . '" alt="">
     </a>
     </div>
    ';
@@ -97,7 +97,7 @@
 								echo 'Geen foto\'s gevonden.';
 							}
 							include 'modals/show-image.php';
-							
+							include 'modals/avatar.php';
 						
                     ?>
 				

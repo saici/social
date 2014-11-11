@@ -1,6 +1,13 @@
 <?php
+
 include "includes/connect.php";
 include "header.php";
+if(isset($_GET['topic'])){
+	$thread = mysqli_real_escape_string($con, $_GET['topic']);
+}
+else{
+	$thread = "NONE";
+}
 ?>
 <div class="container">
 
@@ -12,13 +19,30 @@ include "header.php";
 							<div class="well">
 											<form action="newtopicsend.php" method="POST">
 												<div class="form-group">
-													<input type="text" class="form-control" name="titelname" id="post" rows="1" placeholder="Titel">
-													<input type="text" class="form-control" name="catergory" id="post" rows="1" placeholder="Catergory">
+													<?php
+														if($thread == "NONE"){
+															echo'
+																<input type="text" class="form-control" name="titelname" placeholder="Titel"><br />
+																<select name="catergory" class="form-control">
+																	<option value="School">School</option>
+																	<option value="Niet-school">Niet school</option>
+
+																</select>
+																<input type="hidden" name="topicid" value="<?php echo $thread;?>" >
+																';
+														}
+														else{
+															echo'
+																
+																<input type="hidden" name="topicid" value="<?php echo $thread;?>" >
+																';
+														}
+													?>
 												</div>
 					
 									<div class="form-group">
 										<textarea class="form-control" name="message" id="post" rows="10" placeholder="message"></textarea>
-										<input type="hidden" name="user" value="NONE">
+										
 									</div>
 									<input type="submit" class="btn btn-primary" value="Verzenden">
 														<!-- Button trigger modal -->
