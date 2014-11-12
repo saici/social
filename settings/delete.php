@@ -1,5 +1,5 @@
 <?php
-	include "includes/connect.php";
+	include "../includes/connect.php";
 		if(!empty($_POST['delete'])){
 		
 				$userid = $_SESSION['userid'];

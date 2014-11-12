@@ -1,5 +1,5 @@
 <?php
-	include 'header.php';
+	include '../header.php';
 ?>
 <!-- Page Content -->
     <div class="container">
@@ -9,7 +9,7 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 <?php
-	include 'includes/salt.php';
+	include '../includes/salt.php';
 		if(isset($_POST['new']) and isset($_SESSION['user'])){
             
 			$userid = $_SESSION['userid'];
