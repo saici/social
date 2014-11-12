@@ -8,7 +8,9 @@ include "header.php";
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
-
+								<div class="page-header">
+									<h1>Forum</h1>
+								</div>
 							<div class="well">
 											<form action="newtopic.php" method="POST">
 									

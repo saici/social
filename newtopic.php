@@ -15,7 +15,9 @@ else{
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-12">
-
+<div class="page-header">
+									<h1><?php if($thread == "NONE"){echo 'Nieuw topic';} else{ echo 'Nieuwe reactie';}?></h1>
+								</div>
 							<div class="well">
 											<form action="newtopicsend.php" method="POST">
 												<div class="form-group">

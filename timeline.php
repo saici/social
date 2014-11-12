@@ -7,7 +7,9 @@
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
-
+								<div class="page-header">
+									<h1>Timeline</h1>
+								</div>
 
 
 <!-- Modal -->
@@ -121,7 +123,7 @@
                         </h4><br />
                        
                     </div>
-                    ' . $row['message'] .'<br /><a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> <a style="margin-top: 20px;" class="btn btn-success btn-sm" href="index.php?like=' . $messageid .'"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a> <a style="margin-top: 20px;" class="btn btn-danger btn-sm" href="index.php?dislike=' . $messageid .'"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $dislikes . ' </a>
+                    ' . $row['message'] .'<br /><a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> <a style="margin-top: 20px;" class="btn btn-success btn-sm" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a> <a style="margin-top: 20px;" class="btn btn-danger btn-sm" href="index.php?dislike=' . $messageid .'"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $dislikes . ' </a>
                 </div>
                 </div>
                ';		

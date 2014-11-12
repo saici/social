@@ -26,7 +26,9 @@ $('#remacc a').click(function (e) {
         <div class="row">
 
             <div class="col-lg-8">
-
+<div class="page-header">
+									<h1>Instellingen</h1>
+								</div>
 <?php
 if(isset($_SESSION['user'])){
 		include 'includes/login-instellingen.php';
