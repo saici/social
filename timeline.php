@@ -15,6 +15,7 @@
 <!-- Modal -->
 
 <div class="well">
+	
                     <h4>Status bijwerken</h4>
                     <form ACTION="includes/post.php" METHOD="POST">
                         <div class="form-group">
@@ -24,6 +25,7 @@
                         <input type="submit" class="btn btn-primary" value="Verzenden">
                                             <!-- Button trigger modal -->
                                             
+
 
 <!-- Single button -->
 <div class="btn-group">
@@ -78,7 +80,7 @@
 			while($row = mysqli_fetch_array($timeline)){
 				
 				$getuser = $row['user'];
-				
+				$userid = $_SESSION['userid'];
 				$getuserquery = mysqli_query($con, "SELECT username FROM users WHERE ID = '$getuser'") or die(mysqli_error($con));
 				
 				
@@ -103,29 +105,37 @@
 				$dislikes = $row['dislikes'];
 				
 				if($likes == 0){
-					$likes = "";
+					$likes = "0";
 				}
 				if($dislikes == 0){
-					$dislikes = "";
+					$dislikes = "0";
 				}
 				
 				$messageid = $row['ID'];
+				
+				$checklikestate = mysqli_query($con, "SELECT * FROM likes WHERE user = '$userid' AND message = '$messageid'");
+				if(mysqli_num_rows($checklikestate) == 0){
+					$likebutton = '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
+				}
+				else{
+					$likebutton = '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm active" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
+				}
+				
 			
 		echo ' 
-				<div class="media">
+				
 				<div class="well">
-                    <a class="pull-left" href="profile.php?id='. $getuser . '">
-                        <img class="media-object" height="64" width="64" src="' . $avatar . '" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">' . ucfirst($userpost) . '
-                            <small>' . $row['messagedate'] . '</small>
-                        </h4><br />
-                       
-                    </div>
-                    ' . $row['message'] .'<br /><a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> <a style="margin-top: 20px;" class="btn btn-success btn-sm" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a> <a style="margin-top: 20px;" class="btn btn-danger btn-sm" href="index.php?dislike=' . $messageid .'"><span class="glyphicon glyphicon-thumbs-down"></span> ' . $dislikes . ' </a>
+									<div class="media">
+										<a class="media-left" style="float: left;" href="profile.php?id=' . $row['user'] .'">
+											<img src="http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png" width="64" alt="..."> <br /><center>' . ucfirst($userpost) . '</center>
+										</a>
+									<div style="padding-left: 10px;" class="media-body">
+										' . ucfirst($row['message']) . '
+										</div>
+									</div>
+                    <a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> ' . $likebutton .'  
                 </div>
-                </div>
+                
                ';		
 							
 				include 'modals/show-image.php';

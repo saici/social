@@ -9,16 +9,8 @@ include "header.php";
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 								<div class="page-header">
-									<h1>Forum</h1>
+									<h1>Forum</h1><p align="right"><a href="newtopic.php" style="margin-top: -80px;"  class="btn btn-primary" value="Nieuw Topic">Nieuw Topic</a></p>
 								</div>
-							<div class="well">
-											<form action="newtopic.php" method="POST">
-									
-										<!-- Button trigger modal -->
-									<input type="submit" class="btn btn-primary" value="Nieuw Topic">
-										</form>
-										
-							</div>
 							
 							<div class="well">
 								<h4>School</h4>

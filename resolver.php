@@ -21,7 +21,7 @@
 			}
 			$message = $usernameresult . " heeft je bericht geliked!";
 			
-			mysqli_query($con, "INSERT INTO notifications(user, touser, date, img, url, type) VALUES('$user', '$touser',NOW(), '1', 'message.php?id=$likeid', 'like')") or die(mysqli_error($con));
+			mysqli_query($con, "INSERT INTO notifications(user, touser, date, img, url, type) VALUES('$user', '$touser',NOW(), '1', '$likeid', 'like')") or die(mysqli_error($con));
 			echo '1';
 		}
 		else{

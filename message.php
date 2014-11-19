@@ -16,12 +16,11 @@
             <div class="col-lg-12">
 				<div class="well">
 				<?php
-					$query = mysqli_query($con, "SELECT * FROM notifications WHERE ID = '$id'") or die(mysqli_error($con));
-					while($row = mysqli_fetch_array($query)){
-						$postid = $row['url'];
-						mysqli_query($con, "DELETE FROM notifications WHERE ID = '$id'");
-					}
-					$getpost = mysqli_query($con, "SELECT * FROM messages WHERE ID = '$postid'")or die(mysqli_error($con));
+					
+						
+					mysqli_query($con, "DELETE FROM notifications WHERE url = 'message.php?id=$id'");
+					
+					$getpost = mysqli_query($con, "SELECT * FROM messages WHERE ID = '$id'")or die(mysqli_error($con));
 					while($row = mysqli_fetch_array($getpost)){
 						echo $row['message'];
 						echo '<hr>';
