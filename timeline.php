@@ -14,15 +14,15 @@
 
 <!-- Modal -->
 
-<div class="well">
+<div class="well" >
 	
                     <h4>Status bijwerken</h4>
-                    <form ACTION="includes/post.php" METHOD="POST">
+                    
                         <div class="form-group">
                             <textarea class="form-control" name="post" id="post" rows="3"><?php if(isset($_GET['re'])){echo mysqli_real_escape_string($con,$_GET['re']);}?></textarea>
                             <input type="hidden" name="user" value="<?php if(isset($_GET['user'])){echo $_GET['user'];}else{echo 'NONE';}?>">
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Verzenden">
+                        <button onclick="sendmessage()" id="sendbutton" class="btn btn-primary">Verzenden</button>
                                             <!-- Button trigger modal -->
                                             
 
@@ -44,7 +44,6 @@
     <li><a href="#">Separated link</a></li>
   </ul>
 </div>
-                    </form>
 
 <?php
 	include 'modals/youtube.php';
@@ -113,33 +112,64 @@
 				
 				$messageid = $row['ID'];
 				
-				$checklikestate = mysqli_query($con, "SELECT * FROM likes WHERE user = '$userid' AND message = '$messageid'");
+				$checklikestate = mysqli_query($con, "SELECT * FROM likes WHERE user = '$userid' AND message = '$messageid' ORDER BY ID DESC");
 				if(mysqli_num_rows($checklikestate) == 0){
 					$likebutton = '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
 				}
 				else{
 					$likebutton = '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm active" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
 				}
+				$comments = '';
+				$id = 'c' . $row['ID'];
+
 				
-			
-		echo ' 
+				$newquery = mysqli_query($con, "SELECT * FROM topics WHERE category='comment' AND topicID = '$id' ORDER BY id ASC");
 				
-				<div class="well">
+				while($rowco = mysqli_fetch_array($newquery)){
+					$commentuser = ucfirst(resolveuser($rowco['user']));
+					$comments = $comments . '
+					<blockquote style="padding: 0 0 0 0; font-size: 12px;">
+					<div class="media-body-wrap panel">
+					
+					<div class="media">
+										<a class="media-left" style="float: left;" href="profile.php?id=' . $rowco['user'] .'">
+											<center><img src="' . $avatar .'" width="32" alt="..."> <br /></center><center>'. ucfirst($commentuser) . '</center>
+										</a>
+									<div style="padding-left: 10px; padding-top: 10px;" class="media-body">
+										' . ucfirst($rowco['message']) . '
+										</div>
+										
+									</div>
+					
+					</div>
+					</blockquote>';
+				}
+								
+				echo ' 
+				
+<div id="newmessage">
+
+</div>                    
+
+				<div class="well" id="well' . $row['ID'] . '">
 									<div class="media">
 										<a class="media-left" style="float: left;" href="profile.php?id=' . $row['user'] .'">
-											<img src="http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png" width="64" alt="..."> <br /><center>' . ucfirst($userpost) . '</center>
+											<img src="' . $avatar .'" width="64" alt="..."> <br /><center>' . ucfirst($userpost) . '</center>
 										</a>
 									<div style="padding-left: 10px;" class="media-body">
 										' . ucfirst($row['message']) . '
 										</div>
+										
 									</div>
-                    <a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '">Repost</a> ' . $likebutton .'  
+									
+                    <a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '"><i class="fa fa-quote-left"></i></a> <a style="margin-top: 20px;" data-target="#comment" onclick="quote(' . $getuser . ','. $row['ID'] .')" data-toggle="modal" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-comment"></i></a> ' . $likebutton .'  
+                    <div style="margin-top: 10px;">' . $comments . '</div>
                 </div>
                 
                ';		
 							
 				include 'modals/show-image.php';
-				
+				include 'modals/comment.php';
 				
                unset($getuser);
 			}

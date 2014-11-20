@@ -26,10 +26,16 @@
 			$id = $row['ID'];
 			$profileinfo = mysqli_query($con, "SELECT * FROM profile WHERE user = '$id'") or die(mysqli_error($con));
 			while($row2 = mysqli_fetch_array($profileinfo)){
+				if($row2['avatar'] == "NONESET"){
+					$avatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+				}
+				else{
+					$avatar = $row2['avatar'];
+				}
 				echo '
 				<div class="col-xs-3">
 					<a href="profile.php?id=' . $id . '" class="thumbnail">
-						<img width="170px" id="photo1" height="170px" src="' . $row2['avatar']. '" alt="100%x180"><br />
+						<img class="well" width="170px" id="photo1" height="170px" src="' . $avatar . '" ><br />
 						<center>' . ucfirst($row['username']) . '</center>
 					</a>
 				</div>

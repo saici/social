@@ -1,7 +1,10 @@
 
 <!-- Blog Sidebar Widgets Column -->
+			
             <div class="col-md-4">
-
+<div class="page-header">
+									<h1>Forum</h1>
+								</div>
                 <!-- Blog Search Well -->
                 <div class="well">
                     <h4>Blog Search</h4>
