@@ -66,10 +66,13 @@
 			
 				if($timelineexist== 0){
 														echo '
-					<div class="alert alert-info">
+					<div id="alert" class="alert alert-info">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <strong>Geen berichten</strong> Er zijn geen berichten beschikbaar.
 </div>
+<div id="newmessage">
+
+</div> 
 					';
 
 
