@@ -40,9 +40,9 @@ else{
 								echo '
 								<br />
 								<div class="page-header">
-									<h1>' . $row['topicname'] .' <small> ' . $row['category'] .'</small></h1>
+									<h1>' . $row['topicname'] .' <small> ' . $row['category'] .'</small><a style="float:right;" href="newtopic.php?topic=' . $row['topicID'] .'"class="btn btn-primary">Reageer</a> <br /></h1>
 								</div>
-								<a href="newtopic.php?topic=' . $row['topicID'] .'"class="btn btn-primary">Reageer</a> <br />
+								
 								<br />
 								';
 								}

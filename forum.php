@@ -9,7 +9,7 @@ include "header.php";
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
 								<div class="page-header">
-									<h1>Forum</h1><p align="right"><a href="newtopic.php" style="margin-top: -80px;"  class="btn btn-primary" value="Nieuw Topic">Nieuw Topic</a></p>
+									<h1>Forum <a href="newtopic.php" style="float: right;"  class="btn btn-primary" value="Nieuw Topic">Nieuw Topic</a></h1>
 								</div>
 							
 							<div class="well">
