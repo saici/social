@@ -57,13 +57,13 @@ $checkpage = 'true';
 		
 		if(pass2 != ""){
 			if(pass1 == pass2){
-				document.getElementById('passincorrect').style.visibility='hidden';
+				document.getElementById('passincorrect').style.display='none';
 				
 
 
 			}
 			else{
-				document.getElementById('passincorrect').style.visibility='visible';
+				document.getElementById('passincorrect').style.display='block';
 			}
 		}
      }
@@ -171,7 +171,7 @@ $checkpage = 'true';
  onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();"class="form-control" style="input-placeholder{color: red;}"placeholder="Wachtwoord" name="registerpassword"><br>
 		<input type="password" id="secondpass" class="form-control" style="input-placeholder{color: red;}"placeholder="Herhaal wachtwoord" autocomplete='off' onchange="check();"
  onkeyup="this.onchange();" onpaste="this.onchange();" oninput="this.onchange();" name="registerreppassword"><br>
-		<div id="passincorrect" style="visibility: hidden;"class="alert alert-danger">
+		<div id="passincorrect" style="display: none;"class="alert alert-danger">
 			
 			<strong>Fout</strong> De 2 wachtwoorden komen niet overeen.
 		</div>
