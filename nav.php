@@ -23,7 +23,10 @@
                     <li>
 							<a href="forum.php">Forum</a>
 						</li>
-                     <li>
+						<li>
+						<a href="mail.php">Mail</a>
+						</li>
+						<li>
                         <a data-toggle="modal" data-target="#signin-modal" href="#">Instellingen</a>
                     </li>
 						

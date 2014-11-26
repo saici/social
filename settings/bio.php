@@ -1,6 +1,6 @@
 <?php if(!isset($con)){die('Error');} ?>
 <h2>Biografie</h2>
-<form action="../ncludes/setbio.php" method="POST"  enctype="multipart/form-data">		
+<form action="../includes/setbio.php" method="POST"  enctype="multipart/form-data">		
 	<textarea class="form-control" placeholder="Vertel iets over jezelf!"name="bio">
 <?php
 		$user = $_SESSION['userid'];
