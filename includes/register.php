@@ -31,18 +31,18 @@ ini_set('display_errors', 'On');  //On or Off
 			//insert in database
 			mysqli_query($con, "INSERT INTO users(username, password, registrationdate, email, active, ID) VALUES('$username', '$password',NOW(), '$email', '1', '$id')") or die(mysqli_error($con));
 			mysqli_query($con, "INSERT INTO profile(user, avatar, bio, banner) VALUES('$id', 'NONESET', 'NONESET', 'NONESET')") or die(mysqli_error($con));
-			header("Location: login.php?register");
+			header("Location: ../login.php?register");
 		}
 		else{
 			//Mail already exist in database
-			header("Location: login.php?emailfail");
+			header("Location: ../login.php?emailfail");
 			die('Nomail');
 		}
 		
 	}
 	else{
 		//fail or nothing inserted in form
-		header("Location: login.php?fail");
+		header("Location: ../login.php?fail");
 	}
 ?>
 
