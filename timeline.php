@@ -66,7 +66,7 @@
 			
 				if($timelineexist== 0){
 														echo '
-					<div id="alert" class="alert alert-info">
+					<div id="alert" style="display: block;" class="alert alert-info">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
     <strong>Geen berichten</strong> Er zijn geen berichten beschikbaar.
 </div>
@@ -165,7 +165,7 @@
 										
 									</div>
 									
-                    <a style="margin-top: 20px; " class="btn btn-info btn-sm" href="index.php?re=' . $message .'&user=' . $getuser . '"><i class="fa fa-quote-left"></i></a> <a style="margin-top: 20px;" data-target="#comment" onclick="quote(' . $getuser . ','. $row['ID'] .')" data-toggle="modal" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-comment"></i></a> ' . $likebutton .'  
+                    <a style="margin-top: 20px; " class="btn btn-info btn-sm" onclick="repost(' . $row['ID'] . ')"><i class="fa fa-quote-left"></i></a> <a style="margin-top: 20px;" data-target="#comment" onclick="quote(' . $getuser . ','. $row['ID'] .')" data-toggle="modal" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-comment"></i></a> ' . $likebutton .'  
                     <div style="margin-top: 10px;">' . $comments . '</div>
                 </div>
                 

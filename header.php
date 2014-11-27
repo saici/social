@@ -41,6 +41,7 @@ include 'includes/resolver.php';
 	<script src="js/quote.js"></script>
 	<script src="js/comment.js"></script>
 	<script src="js/post.js"></script>
+	<script src="js/repost.js"></script>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
