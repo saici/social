@@ -89,13 +89,25 @@
 				
 				while($rowco = mysqli_fetch_array($newquery)){
 					$commentuser = ucfirst(resolveuser($rowco['user']));
+					$commentuserid = $rowco['user'];
+					$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$commentuserid'");
+						while($info = mysqli_fetch_array($getavatar)){
+
+						if($info['avatar']=="NONESET"){  
+							$coavatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+						}
+						else{
+							$coavatar = $info['avatar'];
+						} 
+					}
+					
 					$comments = $comments . '
 					<blockquote style="padding: 0 0 0 0; font-size: 12px;">
 					<div class="media-body-wrap panel">
 					
 					<div class="media">
 										<a class="media-left" style="float: left;" href="profile.php?id=' . $rowco['user'] .'">
-											<center><img src="' . $avatar .'" width="32" alt="..."> <br /></center><center>'. ucfirst($commentuser) . '</center>
+											<center><img src="' . $coavatar .'" width="32" alt="..."> <br /></center><center>'. ucfirst($commentuser) . '</center>
 										</a>
 									<div style="padding-left: 10px; padding-top: 10px;" class="media-body">
 										' . ucfirst($rowco['message']) . '
