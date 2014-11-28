@@ -23,7 +23,7 @@ $date = date("YmdHis");
 $password = salt($username, $password, $email, $date);
 //insert in database
 mysqli_query($con, "INSERT INTO users(username, password, registrationdate, email, active, ID) VALUES('$username', '$password',NOW(), '$email', '1', '$id')") or die(mysqli_error($con));
-mysqli_query($con, "INSERT INTO profile(user, avatar, bio, banner) VALUES('$id', 'NONESET', 'NONESET', 'NONESET')") or die(mysqli_error($con));
+mysqli_query($con, "INSERT INTO profile(user, avatar, bio, banner, ID) VALUES('$id', 'NONESET', 'NONESET', 'NONESET', '$id')") or die(mysqli_error($con));
 header("Location: login.php?register");
 }
 else{
