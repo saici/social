@@ -1,16 +1,21 @@
+ <?php
+	include 'includes/connect.php';
+	
+	include 'header.php';
+	?>
+
 <div class="container">
 
         <div class="row">
-
+	
             <!-- Blog Post Content Column -->
-            <div class="col-lg-12">
+            <div class="col-lg-8">
 					
-										
-                   
+						<div class="page-header">
+									<h1>Mail</h1>
+								</div>			
+               
 <?php
-	include 'includes/connect.php';
-
-	include 'header.php';
 		unset($friendslist);
 		
 	$mailfriends=array();
@@ -35,10 +40,17 @@
 			
 			
 			$mailbox=mysqli_query($con,"SELECT DISTINCT user FROM mail WHERE $friendslist ") or die(mysqli_error($con	));
+
 				
-			
+				while($row=mysqli_fetch_array($mailbox)){
+				
+				
+				
+				//$gebruiker=mysqli_query($con,"SELECT username FROM users WHERE ID='$value' ");
+				$gebruiker=$row['user'];
+				
 			//get avatar	
-			$getuser=$value;
+			$getuser=$gebruiker;
 			$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$getuser'");
 				while($info = mysqli_fetch_array($getavatar)){
 
@@ -50,16 +62,14 @@
 					} 
 				}
 				
-				while($row=mysqli_fetch_array($mailbox)){
-				//$gebruiker=mysqli_query($con,"SELECT username FROM users WHERE ID='$value' ");
-				$gebruiker=$row['user'];
-
+				
 				$lastmsg = mysqli_query($con, "SELECT * FROM mail	WHERE user='$gebruiker' and datesend < NOW() ORDER BY datesend DESC LIMIT 1");
 					
 					while($row1=mysqli_fetch_array($lastmsg)){
+				
 				echo '			<div class="well">	
 									<div class="media">
-										<a class="media-left" style="float: left;" href="profile.php?id=' . $value .'">
+										<a class="media-left" style="float: left;" href="profile.php?id=' . $gebruiker .'">
 											<center><img src="' . $avatar .'" width="32" alt="..."> <br /></center><center>' . resolveuser($row['user']) . '
 											</center>
 											
@@ -82,11 +92,12 @@
 }
 	unset($userid);
 ?>
-	
-		</div>
+				
+		</div><?php include 'sidebar.php';?>	
+	</div>
 	</div>
 </div>
 									
 <?php
-include 'footer.php';
+ include 'footer.php';
 ?>
