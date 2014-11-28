@@ -9,9 +9,17 @@
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">
+
 		<?php
 	if(isset($_POST['q']) AND !$_POST['q'] == ""){
 		$q = "%" . mysqli_real_escape_string($con, $_POST['q'])  . '%';
+		
+		?>
+						<div class="page-header">
+									<h1>Zoekresultaten voor <?php echo ucfirst(mysqli_real_escape_string($con, $_POST['q']));?></h1>
+								</div>
+		<?php
+		
 		$query = mysqli_query($con, "SELECT ID, username FROM users WHERE username LIKE('$q')") or die(mysqli_error($con));
 
 		if(mysqli_num_rows($query) == 0){
@@ -46,7 +54,9 @@
 	}
 	?>
 	      </div>
-                </div>
+	      <?php include 'sidebar.php';?>
+		</div>
+                
 	<?php
 	include 'footer.php';
 ?>

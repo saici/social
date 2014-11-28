@@ -46,7 +46,7 @@ if(isset($_SESSION['user'])){
 		<!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><a href="#personalisatie" role="tab" data-toggle="tab">Personalisatie</a></li>
-  <li><a href="#gegevens" role="tab" data-toggle="tab">Gegevens</a></li>
+
   <li><a href="#changeww" role="tab" class="alert-danger" data-toggle="tab">Wachtwoord veranderen</a></li>
   <li><a href="#remacc" role="tab" class="alert-danger" data-toggle="tab">Account verwijderen</a></li>
 </ul>
@@ -54,7 +54,7 @@ if(isset($_SESSION['user'])){
 <!-- Tab panes -->
 <div class="tab-content">
   <div class="tab-pane active" id="personalisatie"><?php include 'settings/avatarupload.php'; include 'settings/bannerupload.php'; include 'settings/bio.php';?></div>
-  <div class="tab-pane" id="gegevens"><?php include 'settings/emailform.php'; ?></div>
+ 
   <div class="tab-pane" id="changeww"><?php include 'settings/passwordform.php'; ?></div>
   <div class="tab-pane" id="remacc"><?php include 'settings/deleteform.php'; ?></div>
 </div>
