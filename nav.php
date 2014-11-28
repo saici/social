@@ -15,19 +15,21 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="index.php" title="Home"><i class="fa fa-home"></i>
+</a>
                     </li>
+                    
                     <li>
-                        <a href="profile.php">Mijn Profiel</a>
-                    </li>
-                    <li>
-							<a href="forum.php">Forum</a>
+							<a href="forum.php" title="Forum"><i class="fa fa-comments"></i>
+</a>
 						</li>
 						<li>
-						<a href="mail.php">Mail</a>
+						<a href="mail.php" title="Mail"><i class="fa fa-envelope"></i>
+</a>
 						</li>
 						<li>
-                        <a data-toggle="modal" data-target="#signin-modal" href="#">Instellingen</a>
+                        <a data-toggle="modal" data-target="#signin-modal" title="Instellingen" href="#"><i class="fa fa-cog"></i>
+</a>
                     </li>
 						
                     
@@ -37,7 +39,7 @@
         <div class="input-group">
                         <input type="text" id="q" name="q" class="form-control">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                            <button type="submit" class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
@@ -61,7 +63,10 @@
        <li class="dropdown">
                        <a href="#" class="dropdown-toggle" id="usermenu" data-toggle="dropdown"><?php echo ucfirst($_SESSION['user']);?></span> <span class="caret"></a>
                        <ul class="dropdown-menu message-dropdown" role="menu">
-						<li><a href="login.php?logout">Log uit</a></li>   
+						   <li>
+                        <a href="profile.php"> <i class="fa fa-user"></i> Mijn Profiel</a>
+                    </li>
+						<li><a href="login.php?logout"> <i class="fa fa-power-off"></i> Log uit</a></li>   
 						</ul>
                     </li>
       </ul>

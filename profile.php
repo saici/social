@@ -109,40 +109,16 @@
 
                 <div class="col-lg-8">
 			<?php
-		$gettimeline = mysqli_query($con, "SELECT * FROM messages WHERE user = '$profileuser' ORDER BY messagedate DESC") or die(mysqli_error($con));
-		if(mysqli_num_rows($gettimeline) == 0){
-			?>
-			<div class="media">
-				<div class="well">
-					<b>Nog geen berichten</b> Deze gebruiker heeft nog geen berichten gemaakt.
-				</div>
-			</div>
-			<?php
-		}
-		else{
-		while($row = mysqli_fetch_array($gettimeline)){
-
-			echo '
-				<div class="media">
-				<div class="well">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" height="64" width="64" src="' . $avatar . '
-" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">' . ucfirst($profileusername) . '
-                            <small>2014-10-21 13:28:13</small>
-                        </h4>
-                       ' . $row['message'] . '<br>
-                    </div>
-                </div>
-                </div>
-			';
-
-			
-		
-		}
-	}
+				if(isset($_GET['id'])){
+					$user = mysqli_real_escape_string($con, $_GET['id']);
+					make_profile($user);
+				}
+				else{
+					$user = $_SESSION['userid'];
+					make_profile($user);
+				}
+				
+					
 					?>
 			               </div>
             </div>
