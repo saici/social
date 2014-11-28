@@ -26,7 +26,7 @@
 				$photo = "http://" . $_SERVER['SERVER_NAME'] . '/social/banners/'. $user;
 				
 				mysqli_query($con, "UPDATE profile SET banner='$photo' WHERE ID = '$user'") or die(mysqli_error($con));
-				header("Location: ../index.php");
+				header("Location: ../profile.php?upload");
 			
 
 				
