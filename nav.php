@@ -61,12 +61,11 @@
               </ul>
             </li>
        <li class="dropdown">
-                       <a href="#" class="dropdown-toggle" id="usermenu" data-toggle="dropdown"><?php echo ucfirst($_SESSION['user']);?></span> <span class="caret"></a>
-                       <ul class="dropdown-menu message-dropdown" role="menu">
-						   <li>
-                        <a href="profile.php"> <i class="fa fa-user"></i> Mijn Profiel</a>
-                    </li>
-						<li><a href="login.php?logout"> <i class="fa fa-power-off"></i> Log uit</a></li>   
+						<a href="#" class="dropdown-toggle" id="usermenu" data-toggle="dropdown"><?php echo ucfirst($_SESSION['user']);?></span> <span class="caret"></a>
+						<ul class="dropdown-menu message-dropdown" role="menu">
+							<li><a href="profile.php"> <i class="fa fa-user"></i> Mijn Profiel</a></li>
+							<li><a href="#" title="Instellingen" data-toggle="modal" data-target="#signin-modal"><i class="fa fa-cog"></i> Instellingen</a></li>
+							<li><a href="login.php?logout" > <i class="fa fa-power-off"></i> Log uit</a></li>   
 						</ul>
                     </li>
       </ul>
