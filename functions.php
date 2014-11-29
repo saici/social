@@ -1,6 +1,88 @@
 <?php
+	function resolveuser($user){
+		
+		include 'includes/connect.php';
+	
+		$query = mysqli_query($con, "SELECT username FROM users WHERE ID = '$user'") or die(mysqli_error($con));
+		while($row = mysqli_fetch_array($query)){
+			return $row['username'];
+		}
+	}
+	
+	function getavatar($user){
+				include 'includes/connect.php';
+				$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$user'");
+				while($info = mysqli_fetch_array($getavatar)){
+					
+					if($info['avatar']=="NONESET"){  
+						return "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+					}
+					else{
+						return $info['avatar'];
+					} 
+				}
+	}
+	
+	function getlikes($likes, $messageid){
+				include 'includes/connect.php';
+				if($likes == 0){
+					$likes = "0";
+				}
+				
+				$userid = $_SESSION['userid'];
+				
+				$checklikestate = mysqli_query($con, "SELECT * FROM likes WHERE user = '$userid' AND message = '$messageid' ORDER BY ID DESC");
+				if(mysqli_num_rows($checklikestate) == 0){
+					return '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
+				}
+				else{
+					return '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm active" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
+				}
+	}
+	function getcomments($id){
+				include 'includes/connect.php';
+				$comments = '';
+				
 
+				
+				$newquery = mysqli_query($con, "SELECT * FROM topics WHERE category='comment' AND topicID = '$id' ORDER BY id ASC");
+				
+				while($rowco = mysqli_fetch_array($newquery)){
+					$commentuser = ucfirst(resolveuser($rowco['user']));
+					$commentuserid = $rowco['user'];
+					$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$commentuserid'");
+						while($info = mysqli_fetch_array($getavatar)){
 
+						if($info['avatar']=="NONESET"){  
+							$coavatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
+						}
+						else{
+							$coavatar = $info['avatar'];
+						} 
+					}
+					
+					$comments = $comments . '
+					<blockquote style="padding: 0 0 0 0; font-size: 12px;">
+					<div class="media-body-wrap panel">
+					
+					<div class="media">
+										<a class="media-left" style="float: left;" href="profile.php?id=' . $rowco['user'] .'">
+											<center><img src="' . $coavatar .'" width="32" alt="..."> <br /></center><center>'. ucfirst($commentuser) . '</center>
+										</a>
+									<div style="padding-left: 10px; padding-top: 10px;" class="media-body">
+										' . ucfirst($rowco['message']) . '
+										</div>
+										
+									</div>
+					
+					</div>
+					</blockquote>';
+					
+					
+				}
+				
+				return $comments;
+	}
 	function getfriends($user){
 			include 'includes/connect.php';
 			
@@ -42,83 +124,21 @@
 				
 				$getuser = $row['user'];
 				$userid = $_SESSION['userid'];
-				$getuserquery = mysqli_query($con, "SELECT username FROM users WHERE ID = '$getuser'") or die(mysqli_error($con));
 				
+				$userpost = resolveuser($getuser);
 				
-				while($user = mysqli_fetch_array($getuserquery)){
-					$userpost = $user['username'];
-				}
-				
-				$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$getuser'");
-				while($info = mysqli_fetch_array($getavatar)){
-
-				if($info['avatar']=="NONESET"){  
-					$avatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
-				}
-				else{
-					$avatar = $info['avatar'];
-				} 
-				}
+				$avatar = getavatar($userid);
 				
 				$message = $row['message'];
 				$message = str_replace('"', '*', $message);
 				$likes = $row['likes'];
-				$dislikes = $row['dislikes'];
-				
-				if($likes == 0){
-					$likes = "0";
-				}
-				if($dislikes == 0){
-					$dislikes = "0";
-				}
-				
 				$messageid = $row['ID'];
+				$likebutton = getlikes($likes ,$messageid);
 				
-				$checklikestate = mysqli_query($con, "SELECT * FROM likes WHERE user = '$userid' AND message = '$messageid' ORDER BY ID DESC");
-				if(mysqli_num_rows($checklikestate) == 0){
-					$likebutton = '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
-				}
-				else{
-					$likebutton = '<a style="margin-top: 20px;" id="like' . $messageid. '"class="btn btn-success btn-sm active" onclick="like(' . $messageid .')"><span class="glyphicon glyphicon-thumbs-up"></span> ' . $likes .'</a>';
-				}
-				$comments = '';
 				$id = 'c' . $row['ID'];
 
-				
-				$newquery = mysqli_query($con, "SELECT * FROM topics WHERE category='comment' AND topicID = '$id' ORDER BY id ASC");
-				
-				while($rowco = mysqli_fetch_array($newquery)){
-					$commentuser = ucfirst(resolveuser($rowco['user']));
-					$commentuserid = $rowco['user'];
-					$getavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$commentuserid'");
-						while($info = mysqli_fetch_array($getavatar)){
-
-						if($info['avatar']=="NONESET"){  
-							$coavatar = "http://i1.wp.com/www.techrepublic.com/bundles/techrepubliccore/images/icons/standard/icon-user-default.png";
-						}
-						else{
-							$coavatar = $info['avatar'];
-						} 
-					}
-					
-					$comments = $comments . '
-					<blockquote style="padding: 0 0 0 0; font-size: 12px;">
-					<div class="media-body-wrap panel">
-					
-					<div class="media">
-										<a class="media-left" style="float: left;" href="profile.php?id=' . $rowco['user'] .'">
-											<center><img src="' . $coavatar .'" width="32" alt="..."> <br /></center><center>'. ucfirst($commentuser) . '</center>
-										</a>
-									<div style="padding-left: 10px; padding-top: 10px;" class="media-body">
-										' . ucfirst($rowco['message']) . '
-										</div>
-										
-									</div>
-					
-					</div>
-					</blockquote>';
-				}
-								
+				$comments = getcomments($id);
+							
 				echo ' 
 				
 <div id="newmessage">

@@ -52,7 +52,7 @@
 				$query = mysqli_query($con, "SELECT * FROM notifications WHERE touser = '$user'");
 				
 			?>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <span class="badge"><?php echo mysqli_num_rows($query);?></span> <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <?php echo mysqli_num_rows($query);?></span> <span class="caret"></a>
               <ul class="dropdown-menu message-dropdown" role="menu">
 
 				<?php include 'includes/notifications.php';?>

@@ -56,7 +56,7 @@
 					    <div class="media">
 				<div class="well">
 					<h3>Over <?php echo ucfirst($profileusername);?></h3>
-                    <form action="includes/setbio.php" method="POST"><a class="pull-left" href="#"></a><div id="biografie"><?php if($bio == "NONESET"){ echo "Je hebt nog geen biografie ingesteld. Dit kan je instellen op de instellingen pagina!"; } else { echo $bio; }?></div><?php if($_SESSION['userid'] == $profileuser){ echo '<a id="pencil" onclick="editbio()"><i class="fa fa-pencil"></i></a>'; }?></form>
+                    <form action="includes/setbio.php" method="POST"><a class="pull-left" href="#"></a><div id="biografie"><?php if($bio == "NONESET"){ echo 'Je hebt nog geen biografie ingesteld. Dit kan je instellen op de instellingen pagina.'; } else { echo $bio; }?></div><?php if($_SESSION['userid'] == $profileuser){ echo '<a id="pencil" onclick="editbio()"><i class="fa fa-pencil"></i></a>'; }?></form>
 					<hr>
 					<?php 
 					$user = $_SESSION['userid'];
