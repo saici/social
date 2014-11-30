@@ -1,6 +1,4 @@
 <?php
-
-//includes
 include 'connect.php';
 include 'salt.php';
 if(isset($_POST['registerusername']) && isset($_POST['registerpassword']) && isset($_POST['registeremail'])){
