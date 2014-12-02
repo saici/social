@@ -1,56 +1,47 @@
-<div class="container">
-
-        <div class="row">
-
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-					
-				
 <?php
 include 'includes/connect.php';
 include 'header.php';
 
-if(isset($_GET['person'])){
-	$person=$_GET['person'];
-	$user=$_SESSION['userid'];
-	$sended=array();
-	
-	echo '<div class="page-header">
-									<h1>Berichten van
-									
-									' . resolveuser($person) . '
-									<h1></div>'; 
+if(isset($_POST['touser'])){
 
-	
-	$allmsg=mysqli_query($con,"SELECT message FROM mail WHERE user='$person' and touser='$user' or user='$user' and touser='$person' and datesend < NOW() ORDER BY datesend ASC ");
-	$recievedmsg=mysqli_query($con,"SELECT message FROM mail WHERE user='$person' and touser='$user' OR user='$user' and touser ='$person' and datesend < NOW() ORDER BY datesend DESC  " );
-	$sendedmsg=mysqli_query($con,"SELECT message FROM mail WHERE touser='$person' and user='$user'  and datesend < NOW() ORDER BY datesend DESC ");
-	
-	while($row=mysqli_fetch_array($sendedmsg)){
-		array_push($sended,$row['message']);
+$person=mysqli_real_escape_string($con,$_POST['touser']);
+}
+
+ echo '
+<div class = "container">
+<div class= "row">
+
+<div class="well">
+verzenden naar
+<form action="sendmail.php" method="post">
+
+' ; if(isset($person)){echo $person;} else{
+	$friends=mysqli_query($con,"SELECT follows FROM followers WHERE user='$user' "); 	
+	$friendslist=array();
+	while($row=mysqli_fetch_array($friends)){
+		array_push($friendslist,$row['follows']);
+				$x=0;
 	}
-	echo '<div class=well> ';	
-	while($row=mysqli_fetch_array($allmsg)){
-		
-		
-		if(in_array($row['message'],$sended)){
-			echo '<div class ="chatboxsended">' . $row['message'] .'<br> </div>';
-		}
-		else{
-			echo $row['message'] . "<br>"  ;
-		}
-		
-		
-	}
-	echo '</div>';
-	echo ' 
-	<div class="well">
+	
+} echo '
+
+		<select class="form-control">
+			' ; 
+foreach($friendslist as $value){
+	echo '<option  name="person"  value="' . $value .'">' . resolveuser($value) . '</option>'; 		
+}
+		echo '
+		</select>	
+</div>
+
+
+ <div class="well">
 	
                     <h4>Bericht vesturen</h4>
-                    <form action="sendmail.php" method="post">
+                    
                         <div class="form-group">
                             <textarea name="bericht" colin="3" class="form-control"></textarea>
-							<input type="hidden" name="person" value="' . $person . '">
+								<input type="hidden" name="person" value="' . $value . '">
                         </div>
                         <button onclick="sendmessage()" id="sendbutton" class="btn btn-primary">Verzenden</button>
                                             <!-- Button trigger modal -->
@@ -99,8 +90,7 @@ if(isset($_GET['person'])){
 </div>
 </form>
                 </div>
- 	
-	'; 
-}
+';
+
 include 'footer.php';
 ?>

@@ -41,7 +41,7 @@
 					$avatar = $row2['avatar'];
 				}
 				echo '
-				<div class="col-lg-3">
+				<div class="col-xs-3">
 					<a href="profile.php?id=' . $id . '" class="thumbnail">
 						<img class="well" width="170px" id="photo1" height="170px" src="' . $avatar . '" ><br />
 						<center>' . ucfirst($row['username']) . '</center>

@@ -12,12 +12,16 @@
             <div class="col-lg-8">
 					
 						<div class="page-header">
-									<h1>Mail</h1>
+									<h1>Mail
+									<a href="newmail.php" style="float: right;" class="btn btn-primary" value="newmail">Een nieuw bericht versturen</a>
+									</h1>
 								</div>			
                
 <?php
-		unset($friendslist);
-		
+$userid=$_SESSION['userid'];
+	$x=mysqli_query($con,"SELECT * FROM mail WHERE touser='$userid'	");
+	if(mysqli_num_rows($x)!=0){
+	
 	$mailfriends=array();
 		if(isset($_SESSION['user'])){
 			
@@ -28,6 +32,7 @@
 			}
 			
 			//eigen inject
+			
 			foreach ($mailfriends as $value) {
 				if(!isset($friendslist)){
 					$friendslist = $friendslist . "user = '" . $value . "'";
@@ -90,6 +95,11 @@
 			
 
 }
+}
+else{
+  echo 'U heeft nog geen mail';
+}
+
 	unset($userid);
 ?>
 				
