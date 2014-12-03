@@ -83,8 +83,9 @@ $userid=$_SESSION['userid'];
 										' . $row1['message'] . '
 									
 								</div>
-								<form action="mailperson.php" method ="get">
-								<button type="submit" name="person" value="' . $row["user"]  .  '" style="margin-top: 20px;" class="btn btn-info btn-sm" ><i class="glyphicon glyphicon-comment"></i></button>
+								<form action="newmail.php" method ="post">
+								<a href="mailperson.php?person=' . $row["user"]  . '" style="margin-top: 20px;" class="btn btn-info btn-sm" ><i class="fa fa-search"></i></a>
+								<button type="submit" name="touser" value="' . $row["user"]  .  '" style="margin-top: 20px;" class="btn btn-info btn-sm" ><i class="fa fa-comment"></i></a>
 								 </form>
 								
 					</div>';	

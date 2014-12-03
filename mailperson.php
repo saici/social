@@ -18,31 +18,25 @@ if(isset($_GET['person'])){
 	echo '<div class="page-header">
 									<h1>Berichten van
 									
-									' . resolveuser($person) . '
+									<a href="profile.php?id=' . $person. '">' . ucfirst(resolveuser($person)) . '</a>
 									<h1></div>'; 
 
 	
-	$allmsg=mysqli_query($con,"SELECT message FROM mail WHERE user='$person' and touser='$user' or user='$user' and touser='$person' and datesend < NOW() ORDER BY datesend ASC ");
+	$allmsg=mysqli_query($con,"SELECT * FROM mail WHERE user='$person' and touser='$user' or user='$user' and touser='$person' and datesend < NOW() ORDER BY datesend ASC ");
 	$recievedmsg=mysqli_query($con,"SELECT message FROM mail WHERE user='$person' and touser='$user' OR user='$user' and touser ='$person' and datesend < NOW() ORDER BY datesend DESC  " );
 	$sendedmsg=mysqli_query($con,"SELECT message FROM mail WHERE touser='$person' and user='$user'  and datesend < NOW() ORDER BY datesend DESC ");
 	
 	while($row=mysqli_fetch_array($sendedmsg)){
 		array_push($sended,$row['message']);
 	}
-	echo '<div class=well> ';	
+	echo '<div class=well> <table>';	
 	while($row=mysqli_fetch_array($allmsg)){
-		
-		
-		if(in_array($row['message'],$sended)){
-			echo '<div class ="chatboxsended">' . $row['message'] .'<br> </div>';
-		}
-		else{
-			echo $row['message'] . "<br>"  ;
-		}
+
+			echo '<tr><td><b>' . ucfirst(resolveuser($row['user'])) . '</b>&nbsp;</td> <td><b>: </b>' . $row['message'] . "</td></tr>"  ;
 		
 		
 	}
-	echo '</div>';
+	echo '</table></div>';
 	echo ' 
 	<div class="well">
 	
@@ -57,24 +51,7 @@ if(isset($_GET['person'])){
                                             
 
 
-						<!-- Single button -->
-						<div class="btn-group">
-						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							+ 
-						  </button>
-						  <ul class="dropdown-menu" role="menu">
-							<li>
-							<a href="#" data-target="#myModal" data-toggle="modal">
-								<i class="fa fa-youtube"></i> YouTube
-							</a> 
-							</li>
-							<li><a href="#" data-target="#imagemodal" data-toggle="modal"><i class="fa fa-picture-o"></i> Foto</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						  </ul>
-						</div>
-
+						
 
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">

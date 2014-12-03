@@ -11,6 +11,6 @@ if(isset($_POST['bericht']) && isset($_POST['person']) ){
 else {
 echo 'shit werkt niet';
 }
-
+sleep(5);
 header ('location: mailperson.php?person=' . $person);
 ?>
