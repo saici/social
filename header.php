@@ -34,7 +34,9 @@ $checkpage = 'true';
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+	<style>
+	
+	</style>
     <!-- Custom CSS -->
     <link href="css/blog-post.css" rel="stylesheet">
     <link href="css/full-width-pics.css" rel="stylesheet">
@@ -61,6 +63,14 @@ $checkpage = 'true';
 </head>
 <body>
 	<?php
+				if(basename($_SERVER['PHP_SELF']) != "index.php"){
+					if(isset($_SESSION['userid'])){
+						
+					}
+					else{
+						header("Location: index.php?requied");
+					}
+				}
 				$getuser = $_SESSION['userid'];
 				$getownavatar = mysqli_query($con, "SELECT * FROM profile WHERE user = '$getuser'");
 				while($avatarrow = mysqli_fetch_array($getownavatar)){

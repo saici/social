@@ -122,6 +122,14 @@ $checkpage = 'true';
 									';
 								}
 									?>
+									<?php if(isset($_GET['requied'])){ echo'
+									<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+   Je moet ingelogd zijn om deze actie uit te kunnen voeren.
+</div>
+									';
+								}
+									?>
 																	<?php if(isset($_GET['removed'])){ echo'
 									<div class="alert alert-info">
     <a href="#" class="close" data-dismiss="alert">&times;</a>
