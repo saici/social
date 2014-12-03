@@ -67,12 +67,12 @@
 						
 						} 
 						else{ 
-							echo '<div class="follow" ><form action="includes/addfriend.php" METHOD="POST"><input type="hidden" name="user" value="' . $profileuser . '"><input type="submit" class="btn btn-success btn" value="Volgen"></form>
-							<form action="newmail.php" method="post">
-							<input type = "hidden" name="touser" value="' . $profileusername . '">
-						<br>		<input type="submit" class="btn btn-primary" value"mailen" style="float: right>
+							echo '<div class="follow" ><form action="includes/addfriend.php" style="width: 75px; float: left;" METHOD="POST"><input type="hidden" name="user" value="' . $profileuser . '"><input type="submit" class="btn btn-success btn" value="Volgen"></form>
+							<form action="newmail.php" style="width: 44px; float: left;"method="post">
+							<input type = "hidden" name="touser" value="' . $user . '">
+							<button class="btn btn-primary" value="mailen" ><i class="fa fa-envelope"></i></button>
 							</form>
-							
+							<br> <br>
 							</div>';
 						}
 					}

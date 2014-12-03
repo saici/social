@@ -15,7 +15,7 @@ $person=mysqli_real_escape_string($con,$_POST['touser']);
 verzenden naar
 <form action="sendmail.php" method="post">
 
-' ; if(isset($person)){echo $person;} else{
+' ; 
 	$friends=mysqli_query($con,"SELECT follows FROM followers WHERE user='$user' "); 	
 	$friendslist=array();
 	while($row=mysqli_fetch_array($friends)){
@@ -23,14 +23,21 @@ verzenden naar
 				$x=0;
 	}
 	
-} echo '
+ echo '
 
 		<select class="form-control">
 			' ; 
-foreach($friendslist as $value){
-	echo '<option  name="person"  value="' . $value .'">' . resolveuser($value) . '</option>'; 		
+if(isset($_POST['touser'])){
+	$person = mysqli_real_escape_string($con, $_POST['touser']);
+	echo '<option name="person" value="' . $person .'">' . resolveuser($person) . '</option>'; 		
 }
+foreach($friendslist as $value){
+	echo '<option name="person" value="' . $value .'">' . resolveuser($value) . '</option>'; 		
+}
+
 		echo '
+		
+		
 		</select>	
 </div>
 
@@ -48,23 +55,7 @@ foreach($friendslist as $value){
                                             
 
 
-						<!-- Single button -->
-						<div class="btn-group">
-						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-							+ 
-						  </button>
-						  <ul class="dropdown-menu" role="menu">
-							<li>
-							<a href="#" data-target="#myModal" data-toggle="modal">
-								<i class="fa fa-youtube"></i> YouTube
-							</a> 
-							</li>
-							<li><a href="#" data-target="#imagemodal" data-toggle="modal"><i class="fa fa-picture-o"></i> Foto</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						  </ul>
-						</div>
+						
 
 
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
