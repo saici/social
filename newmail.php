@@ -8,12 +8,15 @@ $person=mysqli_real_escape_string($con,$_POST['touser']);
 }
 
  echo '
+ <form action="sendmail.php" method="post">
 <div class = "container">
 <div class= "row">
-
+<div class="page-header">
+					<h1>Nieuw bericht</h1>
+				</div>
 <div class="well">
 verzenden naar
-<form action="sendmail.php" method="post">
+
 
 ' ; 
 	$friends=mysqli_query($con,"SELECT follows FROM followers WHERE user='$user' "); 	
@@ -25,7 +28,7 @@ verzenden naar
 	
  echo '
 
-		<select class="form-control">
+		<select class="form-control" name="person">
 			' ; 
 if(isset($_POST['touser'])){
 	$person = mysqli_real_escape_string($con, $_POST['touser']);
@@ -48,7 +51,7 @@ foreach($friendslist as $value){
                     
                         <div class="form-group">
                             <textarea name="bericht" colin="3" class="form-control"></textarea>
-								<input type="hidden" name="person" value="' . $value . '">
+								
                         </div>
                         <button onclick="sendmessage()" id="sendbutton" class="btn btn-primary">Verzenden</button>
                                             <!-- Button trigger modal -->
