@@ -127,7 +127,7 @@
 				
 				$userpost = resolveuser($getuser);
 				
-				$avatar = getavatar($userid);
+				$avatar = getavatar($row['user']);
 				
 				$message = $row['message'];
 				$message = str_replace('"', '*', $message);

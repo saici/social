@@ -73,6 +73,7 @@ if(isset($_GET['person'])){
       </div>
     </div>
   </div>
+  </div>
 </div>
 </form>
                 </div>

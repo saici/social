@@ -81,6 +81,15 @@
 					}
 					?>
 				</div>
+				<div class="well">
+					<h3>Vrienden van <?php echo ucfirst($profileusername);?></h3>
+                    <?php
+						$friendlist = getfriends($_SESSION['userid']);
+						foreach($friendlist as $value){
+							echo $value;
+						}
+					?>
+				</div>
 				<div class="well" style="overflow: collapse;">
 					<h3>Foto's van <?php echo ucfirst($profileusername);?></h3>
                     <?php 
